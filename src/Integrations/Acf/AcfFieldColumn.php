@@ -37,6 +37,25 @@ final class AcfFieldColumn extends AbstractColumnType
         ];
     }
 
+    /**
+     * 設定UIの「列タイプ」一覧に1件ずつ出すACFフィールド。フィールドグループの表示条件で画面に絞り込む。
+     * @return list<array{key:string,label:string,group:string}>
+     */
+    public function pickable(string $postType = ''): array
+    {
+        $args = $this->object === 'user' ? ['user_form' => 'edit'] : ['post_type' => $postType];
+        $out = [];
+        foreach (acf_get_field_groups($args) as $group) {
+            foreach ((array) acf_get_fields($group['key']) as $f) {
+                if (in_array($f['type'], ['tab', 'message', 'accordion'], true)) {
+                    continue;
+                }
+                $out[] = ['key' => (string) $f['key'], 'label' => (string) $f['label'], 'group' => (string) $group['title']];
+            }
+        }
+        return $out;
+    }
+
     private function ref(int $id): string|int
     {
         return $this->object === 'user' ? 'user_' . $id : $id;

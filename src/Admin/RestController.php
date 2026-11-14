@@ -7,6 +7,7 @@ use LimeColumns\Column\Column;
 use LimeColumns\Container;
 use LimeColumns\Contracts\ColumnType;
 use LimeColumns\Contracts\ListScreen;
+use LimeColumns\Integrations\Acf\AcfFieldColumn;
 use LimeColumns\Storage\ColumnSet;
 
 /** 設定UI用のREST API（namespace: lime-columns/v1）。manage_options 権限のみ。 */
@@ -55,8 +56,22 @@ final class RestController
             'config' => $set->toArray(),
             'types' => $this->describeTypes($screen),
             'foreign' => (object) (array) get_option('lime_columns_foreign_' . $screen->key(), []),
+            'acf' => $this->acfFields($screen),
             'roles' => $this->roles(),
         ];
+    }
+
+    /** @return array{type:string,fields:list<array{key:string,label:string,group:string}>} */
+    private function acfFields(ListScreen $screen): array
+    {
+        $types = $this->c->get('types')->forScreen($screen);
+        foreach (['acf_field', 'user_acf_field'] as $id) {
+            if (($types[$id] ?? null) instanceof AcfFieldColumn) {
+                $postType = str_starts_with($screen->key(), 'post:') ? substr($screen->key(), 5) : '';
+                return ['type' => $id, 'fields' => $types[$id]->pickable($postType)];
+            }
+        }
+        return ['type' => '', 'fields' => []];
     }
 
     public function saveScreen(\WP_REST_Request $req): array|\WP_Error

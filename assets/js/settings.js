@@ -93,6 +93,8 @@ function renderMain() {
           (byGroup[ty.group] ??= []).push(h('option', { value: ty.id }, ty.label));
         }
         for (const [g, opts] of Object.entries(byGroup)) sel.append(h('optgroup', { label: g }, opts));
+        if (state.data.acf.fields.length) sel.append(h('optgroup', { label: 'ACF' },
+          state.data.acf.fields.map((f) => h('option', { value: 'acf:' + f.key }, `${f.group} › ${f.label}`))));
         const foreign = Object.entries(state.data.foreign).filter(([k]) => !used.has(k));
         if (foreign.length) sel.append(h('optgroup', { label: 'Other plugins' },
           foreign.map(([k, l]) => h('option', { value: 'foreign:' + k }, l))));
@@ -202,6 +204,10 @@ function addColumn(v) {
   if (v.startsWith('foreign:')) {
     const k = v.slice(8);
     cols.push({ name: k, type: 'foreign', label: state.data.foreign[k], width: '', width_unit: '%', sort: false, search: false, export: false, settings: {} });
+  } else if (v.startsWith('acf:')) {
+    const f = state.data.acf.fields.find((x) => x.key === v.slice(4));
+    const ty = typeOf(state.data.acf.type);
+    cols.push({ name: uid(), type: ty.id, label: f.label, width: '', width_unit: '%', sort: false, search: false, export: ty.caps.export, settings: { field_key: f.key } });
   } else {
     const ty = typeOf(v);
     cols.push({ name: ty.native_key || uid(), type: v, label: ty.label, width: '', width_unit: '%', sort: false, search: false, export: ty.caps.export, settings: {} });
