@@ -36,7 +36,7 @@ async function init() {
 }
 
 async function select(key) {
-  if (state.dirty && !confirm('Discard unsaved changes?')) return;
+  if (state.dirty && !confirm(t('Discard unsaved changes?'))) return;
   state.key = key;
   state.data = await api('/screens/' + encodeURIComponent(key));
   state.dirty = false;
@@ -62,7 +62,7 @@ function renderSidebar() {
       h('h3', {}, g),
       h('ul', {}, list.map((s) => h('li', { class: s.key === state.key ? 'is-active' : '' },
         h('a', { href: '#', onclick: (e) => { e.preventDefault(); select(s.key); } },
-          s.label, s.configured ? h('span', { class: 'lc-dot', title: 'configured' }) : ''))))
+          s.label, s.configured ? h('span', { class: 'lc-dot', title: t('Configured') }) : ''))))
     )));
 }
 
@@ -153,11 +153,11 @@ function renderColumn(col, i) {
 
   row.append(
     h('div', { class: 'lc-head' },
-      h('span', { class: 'lc-grip', title: 'drag' }, '⠿'),
+      h('span', { class: 'lc-grip', title: t('Drag to reorder') }, '⠿'),
       h('button', { type: 'button', class: 'lc-title', onclick: () => { body.hidden = !body.hidden; } },
         strip(col.label) || col.name, h('small', {}, ' ' + (ty?.label ?? col.type))),
-      h('button', { type: 'button', class: 'button-link', 'aria-label': 'up', disabled: i === 0, onclick: () => move(i, -1) }, '↑'),
-      h('button', { type: 'button', class: 'button-link', 'aria-label': 'down', disabled: i === cols.length - 1, onclick: () => move(i, 1) }, '↓'),
+      h('button', { type: 'button', class: 'button-link', 'aria-label': t('Move up'), disabled: i === 0, onclick: () => move(i, -1) }, '↑'),
+      h('button', { type: 'button', class: 'button-link', 'aria-label': t('Move down'), disabled: i === cols.length - 1, onclick: () => move(i, 1) }, '↓'),
       h('button', { type: 'button', class: 'button-link-delete', onclick: () => { cols.splice(i, 1); touch(); render(); } }, t('Remove'))),
     body);
   return row;
@@ -242,9 +242,9 @@ function renderImport() {
     out.hidden = false; out.textContent = '…';
     try {
       const r = await api('/import/acp', 'POST', { dry_run: dry, overwrite });
-      out.textContent = !r.source_exists ? 'Admin Columns table not found.' : r.lists.map((l) =>
-        `[${l.source} → ${l.target || '-'}] ${l.status}\n  mapped: ${l.mapped.length}\n` +
-        l.mapped.map((m) => '    ✓ ' + m).join('\n') + (l.unmapped.length ? '\n  unmapped:\n' + l.unmapped.map((m) => '    ✗ ' + m).join('\n') : '')
+      out.textContent = !r.source_exists ? t('Admin Columns table not found.') : r.lists.map((l) =>
+        `[${l.source} → ${l.target || '-'}] ${t(l.status)}\n  ${t('Mapped')}: ${l.mapped.length}\n` +
+        l.mapped.map((m) => '    ✓ ' + m).join('\n') + (l.unmapped.length ? '\n  ' + t('Unmapped') + ':\n' + l.unmapped.map((m) => '    ✗ ' + m).join('\n') : '')
       ).join('\n\n');
       if (!dry) { state.screens = await api('/screens'); }
     } catch (e) { out.textContent = e.message; }

@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-14T06:54:32+00:00\n"
+"POT-Creation-Date: 2026-11-14T15:15:05+00:00\n"
 "PO-Revision-Date: 2026-11-14 16:00+0900\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: lime-columns\n"
@@ -33,7 +33,7 @@ msgstr "管理画面の一覧テーブルの列を自由に構成する、独立
 
 #. Author of the plugin
 #: lime-columns.php
-msgid "Takuma Shigematsu"
+msgid "Takuma Shigematsu@Lime"
 msgstr ""
 
 #. Author URI of the plugin
@@ -149,6 +149,58 @@ msgstr "未設定"
 msgid "Other plugins"
 msgstr "他のプラグイン"
 
+#: src/Admin/SettingsPage.php:70
+msgid "Discard unsaved changes?"
+msgstr "保存されていない変更を破棄しますか？"
+
+#: src/Admin/SettingsPage.php:71
+msgid "Configured"
+msgstr "設定済み"
+
+#: src/Admin/SettingsPage.php:72
+msgid "Drag to reorder"
+msgstr "ドラッグして並び替え"
+
+#: src/Admin/SettingsPage.php:73
+msgid "Move up"
+msgstr "上へ移動"
+
+#: src/Admin/SettingsPage.php:74
+msgid "Move down"
+msgstr "下へ移動"
+
+#: src/Admin/SettingsPage.php:75
+msgid "Admin Columns table not found."
+msgstr "Admin Columns のテーブルが見つかりません。"
+
+#: src/Admin/SettingsPage.php:76
+msgid "Mapped"
+msgstr "変換可能"
+
+#: src/Admin/SettingsPage.php:77
+msgid "Unmapped"
+msgstr "変換不可"
+
+#: src/Admin/SettingsPage.php:78
+msgid "imported"
+msgstr "インポート済み"
+
+#: src/Admin/SettingsPage.php:79
+msgid "dry-run ok"
+msgstr "ドライラン成功"
+
+#: src/Admin/SettingsPage.php:80
+msgid "skipped: already configured (use overwrite)"
+msgstr "スキップ：設定済み（上書きを有効にしてください）"
+
+#: src/Admin/SettingsPage.php:81
+msgid "skipped: list screen not supported"
+msgstr "スキップ：未対応の一覧画面"
+
+#: src/Admin/SettingsPage.php:82
+msgid "error: save failed"
+msgstr "エラー：保存に失敗しました"
+
 #: src/Column/Types/Common/CustomField.php:18
 msgid "Custom field"
 msgstr "カスタムフィールド"
@@ -162,16 +214,16 @@ msgid "Type"
 msgstr "タイプ"
 
 #: src/Column/Types/Common/CustomField.php:28
-#: src/Column/Types/Post/PostField.php:40
-#: src/Column/Types/User/UserField.php:32
+#: src/Column/Types/Post/PostField.php:47
+#: src/Column/Types/User/UserField.php:40
 #: src/Integrations/Acf/AcfFieldColumn.php:34
 msgid "Date format"
 msgstr "日付の形式"
 
 #: src/Column/Types/Common/CustomField.php:30
 #: src/Column/Types/Post/LatestComment.php:21
-#: src/Column/Types/Post/PostField.php:42
-#: src/Column/Types/User/UserField.php:34
+#: src/Column/Types/Post/PostField.php:49
+#: src/Column/Types/User/UserField.php:42
 #: src/Integrations/Acf/AcfFieldColumn.php:36
 msgid "PHP date format"
 msgstr "PHP の日付フォーマット"
@@ -194,19 +246,19 @@ msgstr "いいえ"
 msgid "Column from another plugin/theme"
 msgstr "他のプラグイン／テーマの列"
 
-#: src/Column/Types/Post/Author.php:9
+#: src/Column/Types/Post/Author.php:12
 msgid "Author (WP default)"
 msgstr "投稿者（WP標準）"
 
-#: src/Column/Types/Post/AuthorDisplay.php:13
+#: src/Column/Types/Post/AuthorDisplay.php:14
 msgid "Author (custom display)"
 msgstr "投稿者（カスタム表示）"
 
-#: src/Column/Types/Post/AuthorDisplay.php:18
+#: src/Column/Types/Post/AuthorDisplay.php:19
 msgid "Display as"
 msgstr "表示形式"
 
-#: src/Column/Types/Post/AuthorDisplay.php:20
+#: src/Column/Types/Post/AuthorDisplay.php:21
 msgid "Link to"
 msgstr "リンク先"
 
@@ -226,12 +278,36 @@ msgstr "最新コメント"
 msgid "Display"
 msgstr "表示"
 
-#: src/Column/Types/Post/PostField.php:45
+#: src/Column/Types/Post/PostField.php:34
+msgid "ID"
+msgstr "ID"
+
+#: src/Column/Types/Post/PostField.php:35
+msgid "Slug"
+msgstr "スラッグ"
+
+#: src/Column/Types/Post/PostField.php:36
+msgid "Status"
+msgstr "ステータス"
+
+#: src/Column/Types/Post/PostField.php:37
+msgid "Last modified"
+msgstr "最終更新日"
+
+#: src/Column/Types/Post/PostField.php:38
+msgid "Excerpt"
+msgstr "抜粋"
+
+#: src/Column/Types/Post/PostField.php:39
+msgid "Content"
+msgstr "本文"
+
+#: src/Column/Types/Post/PostField.php:52
 msgid "Word limit"
 msgstr "単語数の上限"
 
-#: src/Column/Types/Post/Taxonomy.php:13
-#: src/Column/Types/Post/Taxonomy.php:21
+#: src/Column/Types/Post/Taxonomy.php:14
+#: src/Column/Types/Post/Taxonomy.php:22
 msgid "Taxonomy"
 msgstr "タクソノミー"
 
@@ -246,6 +322,42 @@ msgstr "画像サイズ"
 #: src/Column/Types/Post/Title.php:9
 msgid "Title"
 msgstr "タイトル"
+
+#: src/Column/Types/User/NativeUserColumn.php:29
+msgid "Username"
+msgstr "ユーザー名"
+
+#: src/Column/Types/User/NativeUserColumn.php:30
+msgid "Name"
+msgstr "名前"
+
+#: src/Column/Types/User/NativeUserColumn.php:31
+msgid "Email"
+msgstr "メールアドレス"
+
+#: src/Column/Types/User/NativeUserColumn.php:32
+msgid "Role"
+msgstr "ロール"
+
+#: src/Column/Types/User/NativeUserColumn.php:33
+msgid "Posts count (WP default)"
+msgstr "投稿数（WP標準）"
+
+#: src/Column/Types/User/UserField.php:28
+msgid "User ID"
+msgstr "ユーザー ID"
+
+#: src/Column/Types/User/UserField.php:29
+msgid "Registered"
+msgstr "登録日"
+
+#: src/Column/Types/User/UserField.php:30
+msgid "Website"
+msgstr "ウェブサイト"
+
+#: src/Column/Types/User/UserField.php:31
+msgid "Display name"
+msgstr "表示名"
 
 #: src/Features/Export/ExportFeature.php:43
 msgid "Export CSV"
@@ -264,7 +376,7 @@ msgstr "ACFフィールド"
 msgid "Repeater sub field key"
 msgstr "リピーターのサブフィールドキー"
 
-#: src/ListScreen/PostListScreen.php:19
+#: src/ListScreen/PostListScreen.php:24
 msgid "Post types"
 msgstr "投稿タイプ"
 

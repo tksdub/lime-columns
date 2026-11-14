@@ -67,6 +67,19 @@ final class SettingsPage
             'Confirm reset' => __('Reset this list to defaults?', 'lime-columns'),
             'Not configured' => __('Not configured', 'lime-columns'),
             'Other plugins' => __('Other plugins', 'lime-columns'),
+            'Discard unsaved changes?' => __('Discard unsaved changes?', 'lime-columns'),
+            'Configured' => __('Configured', 'lime-columns'),
+            'Drag to reorder' => __('Drag to reorder', 'lime-columns'),
+            'Move up' => __('Move up', 'lime-columns'),
+            'Move down' => __('Move down', 'lime-columns'),
+            'Admin Columns table not found.' => __('Admin Columns table not found.', 'lime-columns'),
+            'Mapped' => __('Mapped', 'lime-columns'),
+            'Unmapped' => __('Unmapped', 'lime-columns'),
+            'imported' => __('imported', 'lime-columns'),
+            'dry-run ok' => __('dry-run ok', 'lime-columns'),
+            'skipped: already configured (use overwrite)' => __('skipped: already configured (use overwrite)', 'lime-columns'),
+            'skipped: list screen not supported' => __('skipped: list screen not supported', 'lime-columns'),
+            'error: save failed' => __('error: save failed', 'lime-columns'),
         ];
     }
 }
