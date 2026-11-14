@@ -14,7 +14,7 @@ LimeColumns is written from scratch. It does not reuse any code or assets from o
 - **Post and user list tables** — per post type, plus the Users screen.
 - **28 column types** — native WordPress columns (title, author, date, comments, …), post fields, taxonomies, thumbnails, latest comment, custom fields, user fields, and more.
 - **Sorting** — sort by any sortable column, including meta values (empty values always sort last, and rows are never dropped).
-- **Search** — include selected columns (e.g. meta values) in the list-table search.
+- **Search** — include selected columns in the list-table search: custom field / ACF values, author names (display name and login) and taxonomy term names.
 - **Default sort** — set the initial order per list screen.
 - **CSV export** — export exactly what the list shows, using the same query and filters.
 - **Role restriction** — apply a configuration only to selected roles.
