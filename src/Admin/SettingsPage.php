@@ -70,6 +70,7 @@ final class SettingsPage
             'Confirm reset' => __('Reset this list to defaults?', 'lime-columns'),
             'Not configured' => __('Not configured', 'lime-columns'),
             'Other plugins' => __('Other plugins', 'lime-columns'),
+            'Close' => __('Close', 'lime-columns'),
             'Discard unsaved changes?' => __('Discard unsaved changes?', 'lime-columns'),
             'Configured' => __('Configured', 'lime-columns'),
             'Drag to reorder' => __('Drag to reorder', 'lime-columns'),

@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-14T16:00:59+00:00\n"
+"POT-Creation-Date: 2026-11-14T16:38:07+00:00\n"
 "PO-Revision-Date: 2026-11-14 16:00+0900\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: lime-columns\n"
@@ -28,8 +28,8 @@ msgstr ""
 
 #. Description of the plugin
 #: lime-columns.php
-msgid "A standalone plugin to freely configure the columns of admin list tables."
-msgstr "管理画面の一覧テーブルの列を自由に構成する、独立したカラム管理プラグイン。"
+msgid "A standalone plugin to freely configure the columns of admin list tables. Also works with the native search box. Made in Japan."
+msgstr "管理画面の一覧テーブルの列を自由に構成する、独立したカラム管理プラグイン。純正の検索窓にも対応。日本産プラグイン。"
 
 #. Author of the plugin
 #: lime-columns.php
@@ -150,54 +150,58 @@ msgid "Other plugins"
 msgstr "他のプラグイン"
 
 #: src/Admin/SettingsPage.php:73
+msgid "Close"
+msgstr "閉じる"
+
+#: src/Admin/SettingsPage.php:74
 msgid "Discard unsaved changes?"
 msgstr "保存されていない変更を破棄しますか？"
 
-#: src/Admin/SettingsPage.php:74
+#: src/Admin/SettingsPage.php:75
 msgid "Configured"
 msgstr "設定済み"
 
-#: src/Admin/SettingsPage.php:75
+#: src/Admin/SettingsPage.php:76
 msgid "Drag to reorder"
 msgstr "ドラッグして並び替え"
 
-#: src/Admin/SettingsPage.php:76
+#: src/Admin/SettingsPage.php:77
 msgid "Move up"
 msgstr "上へ移動"
 
-#: src/Admin/SettingsPage.php:77
+#: src/Admin/SettingsPage.php:78
 msgid "Move down"
 msgstr "下へ移動"
 
-#: src/Admin/SettingsPage.php:78
+#: src/Admin/SettingsPage.php:79
 msgid "Admin Columns table not found."
 msgstr "Admin Columns のテーブルが見つかりません。"
 
-#: src/Admin/SettingsPage.php:79
+#: src/Admin/SettingsPage.php:80
 msgid "Mapped"
 msgstr "変換可能"
 
-#: src/Admin/SettingsPage.php:80
+#: src/Admin/SettingsPage.php:81
 msgid "Unmapped"
 msgstr "変換不可"
 
-#: src/Admin/SettingsPage.php:81
+#: src/Admin/SettingsPage.php:82
 msgid "imported"
 msgstr "インポート済み"
 
-#: src/Admin/SettingsPage.php:82
+#: src/Admin/SettingsPage.php:83
 msgid "dry-run ok"
 msgstr "ドライラン成功"
 
-#: src/Admin/SettingsPage.php:83
+#: src/Admin/SettingsPage.php:84
 msgid "skipped: already configured (use overwrite)"
 msgstr "スキップ：設定済み（上書きを有効にしてください）"
 
-#: src/Admin/SettingsPage.php:84
+#: src/Admin/SettingsPage.php:85
 msgid "skipped: list screen not supported"
 msgstr "スキップ：未対応の一覧画面"
 
-#: src/Admin/SettingsPage.php:85
+#: src/Admin/SettingsPage.php:86
 msgid "error: save failed"
 msgstr "エラー：保存に失敗しました"
 
@@ -311,11 +315,11 @@ msgstr "単語数の上限"
 msgid "Taxonomy"
 msgstr "タクソノミー"
 
-#: src/Column/Types/Post/Thumbnail.php:13
+#: src/Column/Types/Post/Thumbnail.php:17
 msgid "Featured image"
 msgstr "アイキャッチ画像"
 
-#: src/Column/Types/Post/Thumbnail.php:17
+#: src/Column/Types/Post/Thumbnail.php:21
 msgid "Image size"
 msgstr "画像サイズ"
 

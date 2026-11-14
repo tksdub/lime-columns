@@ -44,6 +44,17 @@ async function select(key) {
   render();
 }
 
+/** 画面右上に出る通知。成功は数秒で消え、エラーは手動で閉じるまで残る。 */
+function toast(message, kind = 'success') {
+  document.querySelector('.lc-toast')?.remove();
+  const el = h('div', { class: 'lc-toast lc-toast-' + kind, role: kind === 'error' ? 'alert' : 'status' },
+    h('span', { class: 'lc-toast-icon', 'aria-hidden': 'true' }, kind === 'error' ? '!' : '✓'),
+    h('span', { class: 'lc-toast-msg' }, message),
+    h('button', { type: 'button', class: 'lc-toast-close', 'aria-label': t('Close'), onclick: () => el.remove() }, '×'));
+  document.body.append(el);
+  if (kind !== 'error') setTimeout(() => { el.classList.add('is-leaving'); setTimeout(() => el.remove(), 300); }, 3000);
+}
+
 function typeOf(id) { return state.data.types.find((x) => x.id === id); }
 function touch() { state.dirty = true; state.notice = ''; }
 
@@ -120,8 +131,7 @@ function renderMain() {
 
     h('p', { class: 'lc-actions' },
       h('button', { class: 'button button-primary', type: 'button', onclick: save }, t('Save')),
-      state.data.saved ? h('button', { class: 'button', type: 'button', onclick: reset }, t('Reset')) : '',
-      state.notice ? h('span', { class: 'lc-notice' }, state.notice) : '')
+      state.data.saved ? h('button', { class: 'button', type: 'button', onclick: reset }, t('Reset')) : '')
   );
 }
 
@@ -222,9 +232,9 @@ async function save() {
     const res = await api('/screens/' + encodeURIComponent(state.key), 'PUT', {
       title: c.title, status: c.status, settings: c.settings, columns: c.columns,
     });
-    state.data.config = res.config; state.data.saved = true; state.dirty = false; state.notice = t('Saved');
+    state.data.config = res.config; state.data.saved = true; state.dirty = false; toast(t('Saved'));
     state.screens.find((s) => s.key === state.key).configured = true;
-  } catch (e) { state.notice = e.message; }
+  } catch (e) { toast(e.message, 'error'); }
   render();
 }
 

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-14T16:00:59+00:00\n"
+"POT-Creation-Date: 2026-11-14T16:38:07+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: lime-columns\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: lime-columns.php
-msgid "A standalone plugin to freely configure the columns of admin list tables."
+msgid "A standalone plugin to freely configure the columns of admin list tables. Also works with the native search box. Made in Japan."
 msgstr ""
 
 #. Author of the plugin
@@ -148,54 +148,58 @@ msgid "Other plugins"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:73
-msgid "Discard unsaved changes?"
+msgid "Close"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:74
-msgid "Configured"
+msgid "Discard unsaved changes?"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:75
-msgid "Drag to reorder"
+msgid "Configured"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:76
-msgid "Move up"
+msgid "Drag to reorder"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:77
-msgid "Move down"
+msgid "Move up"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:78
-msgid "Admin Columns table not found."
+msgid "Move down"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:79
-msgid "Mapped"
+msgid "Admin Columns table not found."
 msgstr ""
 
 #: src/Admin/SettingsPage.php:80
-msgid "Unmapped"
+msgid "Mapped"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:81
-msgid "imported"
+msgid "Unmapped"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:82
-msgid "dry-run ok"
+msgid "imported"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:83
-msgid "skipped: already configured (use overwrite)"
+msgid "dry-run ok"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:84
-msgid "skipped: list screen not supported"
+msgid "skipped: already configured (use overwrite)"
 msgstr ""
 
 #: src/Admin/SettingsPage.php:85
+msgid "skipped: list screen not supported"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:86
 msgid "error: save failed"
 msgstr ""
 
@@ -309,11 +313,11 @@ msgstr ""
 msgid "Taxonomy"
 msgstr ""
 
-#: src/Column/Types/Post/Thumbnail.php:13
+#: src/Column/Types/Post/Thumbnail.php:17
 msgid "Featured image"
 msgstr ""
 
-#: src/Column/Types/Post/Thumbnail.php:17
+#: src/Column/Types/Post/Thumbnail.php:21
 msgid "Image size"
 msgstr ""
 
