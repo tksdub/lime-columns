@@ -49,6 +49,17 @@
 .lime-columns .lc-actions{display:flex;align-items:center;gap:8px;margin:18px 0 0;padding-top:14px;border-top:1px solid var(--lc-divider)}
 .lime-columns .lc-notice{margin-left:12px;color:#007017}
 
+/* 色付きボタン（白文字）: 有効/無効・削除・列を追加 */
+.lime-columns .lc-status,.lime-columns .lc-add>.button,.lime-columns .lc-head .button-link-delete{color:#fff;border:0;border-radius:6px;font-weight:500;cursor:pointer;transition:filter .12s}
+.lime-columns .lc-status,.lime-columns .lc-add>.button{min-height:32px;padding:0 14px}
+.lime-columns .lc-status{background-color:#646970;padding-right:30px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M5 6l5 5 5-5 2 1-7 7-7-7z' fill='%23fff'/%3E%3C/svg%3E")}
+.lime-columns .lc-status:has(option[value="active"]:checked){background-color:#00a32a}
+.lime-columns .lc-status option{color:#2c3338;background:#fff}
+.lime-columns .lc-add>.button{background:var(--lc-accent)}
+.lime-columns .lc-head .button-link-delete{background:#d63638;padding:3px 10px;text-decoration:none}
+.lime-columns .lc-status:hover,.lime-columns .lc-add>.button:hover,.lime-columns .lc-head .button-link-delete:hover{filter:brightness(.92);color:#fff}
+.lime-columns .lc-status:focus,.lime-columns .lc-add>.button:focus,.lime-columns .lc-head .button-link-delete:focus{color:#fff;box-shadow:0 0 0 2px #fff,0 0 0 4px var(--lc-accent)}
+
 /* インポート */
 .lime-columns .lc-import{margin-top:24px;background:#fff;border:1px solid var(--lc-border);border-radius:var(--lc-radius);box-shadow:var(--lc-shadow);padding:10px 18px}
 .lime-columns .lc-import summary{cursor:pointer;font-weight:600}

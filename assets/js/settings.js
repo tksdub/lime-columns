@@ -76,7 +76,7 @@ function renderMain() {
     h('div', { class: 'lc-bar' },
       h('h2', {}, state.screens.find((s) => s.key === state.key)?.label),
       !state.data.saved ? h('span', { class: 'lc-badge' }, t('Not configured')) : '',
-      h('select', { onchange: (e) => { c.status = e.target.value; touch(); } },
+      h('select', { class: 'lc-status', onchange: (e) => { c.status = e.target.value; touch(); } },
         h('option', { value: 'active', selected: c.status === 'active' }, t('Active')),
         h('option', { value: 'inactive', selected: c.status === 'inactive' }, t('Inactive')))),
 
