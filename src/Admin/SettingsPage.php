@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace LimeColumns\Admin;
 
-/** 設定 > LimeColumns。UIは assets/js/settings.js（ビルド不要のESモジュール）。 */
+/** 設定 > Lime Columns。UIは assets/js/settings.js（ビルド不要のESモジュール）。 */
 final class SettingsPage
 {
     private const SLUG = 'lime-columns';
@@ -11,7 +11,7 @@ final class SettingsPage
     public function register(): void
     {
         add_action('admin_menu', function (): void {
-            add_options_page('LimeColumns', 'LimeColumns', 'manage_options', self::SLUG, [$this, 'render']);
+            add_options_page('Lime Columns', 'Lime Columns', 'manage_options', self::SLUG, [$this, 'render']);
         });
         add_action('admin_enqueue_scripts', [$this, 'assets']);
     }
@@ -33,7 +33,7 @@ final class SettingsPage
             'i18n' => $this->strings(),
         ];
         printf(
-            '<div class="wrap lime-columns"><h1 class="lc-brand"><img src="%s" alt="" width="80" height="80"> LimeColumns</h1><div id="lime-columns-app"></div></div>',
+            '<div class="wrap lime-columns"><h1 class="lc-brand"><img src="%s" alt="" width="80" height="80"> Lime Columns</h1><div id="lime-columns-app"></div></div>',
             esc_url(LIME_COLUMNS_URL . 'assets/images/logo.png')
         );
         printf('<script id="lime-columns-boot" type="application/json">%s</script>', wp_json_encode($boot)); // phpcs:ignore WordPress.Security.EscapeOutput

@@ -21,7 +21,7 @@ final class Container
     {
         if (!array_key_exists($id, $this->instances)) {
             if (!isset($this->factories[$id])) {
-                throw new \RuntimeException(esc_html("LimeColumns: service not found: {$id}"));
+                throw new \RuntimeException(esc_html("Lime Columns: service not found: {$id}"));
             }
             $this->instances[$id] = ($this->factories[$id])($this);
         }

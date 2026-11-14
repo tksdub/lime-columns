@@ -100,7 +100,7 @@ final class Plugin
             return;
         }
         echo '<div class="notice notice-warning"><p>'
-            . esc_html__('Admin Columns Pro is active, so LimeColumns is not applied to list screens. Deactivate it to switch over (settings and the importer remain available).', 'lime-columns')
+            . esc_html__('Admin Columns Pro is active, so Lime Columns is not applied to list screens. Deactivate it to switch over (settings and the importer remain available).', 'lime-columns')
             . '</p></div>';
     }
 

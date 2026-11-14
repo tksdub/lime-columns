@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: LimeColumns
+ * Plugin Name: Lime Columns
  * Description: A standalone plugin to freely configure the columns of admin list tables.
  * Plugin URI: https://github.com/tksdub/lime-columns/
  * Author: Takuma Shigematsu@Lime

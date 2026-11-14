@@ -10,7 +10,7 @@ use LimeColumns\Storage\ColumnSet;
 use LimeColumns\Storage\ColumnSetRepository;
 
 /**
- * Admin Columns(Pro) が保存した一覧設定（{prefix}admin_columns）を LimeColumns 形式へ変換する。
+ * Admin Columns(Pro) が保存した一覧設定（{prefix}admin_columns）を Lime Columns 形式へ変換する。
  * ACP側のテーブル・設定は読み取るだけで一切変更しない。
  */
 final class AcpImporter

@@ -1,4 +1,4 @@
-=== LimeColumns ===
+=== Lime Columns ===
 Contributors: takuma227
 Tags: columns, list table, custom fields, acf, admin
 Requires at least: 6.5
@@ -12,7 +12,7 @@ Freely configure the columns of admin list tables: add, reorder, resize, sort, s
 
 == Description ==
 
-LimeColumns lets you manage the columns of the WordPress admin list tables from a single settings screen. It is written from scratch and does not reuse code or assets from other column-management plugins.
+Lime Columns lets you manage the columns of the WordPress admin list tables from a single settings screen. It is written from scratch and does not reuse code or assets from other column-management plugins.
 
 **Features**
 
@@ -25,23 +25,23 @@ LimeColumns lets you manage the columns of the WordPress admin list tables from 
 * **CSV export** - export exactly what the list shows, using the same query and filters.
 * **Role restriction** - apply a configuration only to selected roles.
 * **ACF integration** - every field of the field groups that apply to a screen is offered in the column-type list, formatted according to its field type. Requires Advanced Custom Fields (optional).
-* **Importer** - convert list-table settings saved by Admin Columns (Pro) into LimeColumns settings, with a dry-run preview. The source data is only read, never modified.
+* **Importer** - convert list-table settings saved by Admin Columns (Pro) into Lime Columns settings, with a dry-run preview. The source data is only read, never modified.
 
-LimeColumns is not affiliated with, endorsed by, or sponsored by the developers of Admin Columns. The name is used only to refer to the source of the settings that the importer reads.
+Lime Columns is not affiliated with, endorsed by, or sponsored by the developers of Admin Columns. The name is used only to refer to the source of the settings that the importer reads.
 
-Note: LimeColumns is not applied to list screens while Admin Columns (Pro) is active. Deactivate it to switch over; the settings screen and the importer remain available meanwhile.
+Note: Lime Columns is not applied to list screens while Admin Columns (Pro) is active. Deactivate it to switch over; the settings screen and the importer remain available meanwhile.
 
 == Installation ==
 
 1. Upload the `lime-columns` folder to the `/wp-content/plugins/` directory, or install the plugin through the Plugins screen.
-2. Activate **LimeColumns** on the Plugins screen.
-3. Open **Settings > LimeColumns**, choose a list screen in the sidebar, then add, reorder and save your columns.
+2. Activate **Lime Columns** on the Plugins screen.
+3. Open **Settings > Lime Columns**, choose a list screen in the sidebar, then add, reorder and save your columns.
 
 == Frequently Asked Questions ==
 
 = Does it work together with Admin Columns? =
 
-No. While Admin Columns (Pro) is active, LimeColumns is not applied to list screens. Deactivate Admin Columns to switch over. You can import its settings first from the settings screen.
+No. While Admin Columns (Pro) is active, Lime Columns is not applied to list screens. Deactivate Admin Columns to switch over. You can import its settings first from the settings screen.
 
 = Does it need Advanced Custom Fields? =
 
