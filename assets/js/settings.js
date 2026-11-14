@@ -140,9 +140,15 @@ const strip = (s) => (s || '').replace(/<[^>]*>/g, '').trim();
 function renderColumn(col, i) {
   const ty = typeOf(col.type);
   const cols = state.data.config.columns;
-  const row = h('li', { class: 'lc-col', draggable: 'true' });
+  const row = h('li', { class: 'lc-col' });
+  // ドラッグを始められるのは「⠿」のつまみだけ。入力欄などではテキストを通常どおり選択できる。
+  row.addEventListener('mousedown', (e) => {
+    if (!e.target.closest('.lc-grip')) return;
+    row.draggable = true;
+    window.addEventListener('mouseup', () => { row.draggable = false; }, { once: true });
+  });
   row.addEventListener('dragstart', (e) => { e.dataTransfer.setData('text/plain', String(i)); row.classList.add('is-drag'); });
-  row.addEventListener('dragend', () => row.classList.remove('is-drag'));
+  row.addEventListener('dragend', () => { row.classList.remove('is-drag'); row.draggable = false; });
   row.addEventListener('dragover', (e) => e.preventDefault());
   row.addEventListener('drop', (e) => {
     e.preventDefault();
