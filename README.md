@@ -4,7 +4,7 @@
 
 An independent WordPress plugin for managing the columns of admin list tables. Add, remove, reorder and resize columns, make them sortable, searchable and exportable, and show custom fields (including ACF) — all from a single settings screen.
 
-Lime Columns is written from scratch. It does not reuse any code or assets from other column-management plugins.
+Lime Columns is written from scratch. It does not reuse any code or assets from other column-management plugins. Made in Japan.
 
 > **Status:** early development (v0.1.0). The API and storage format may change.
 
@@ -45,21 +45,6 @@ There is no build step; the settings UI is a plain ES module.
 To migrate from Admin Columns, open **Import from Admin Columns**, click **Preview** to see which columns can be converted, then **Import**. Enable **Overwrite** to replace screens that already have a Lime Columns configuration.
 
 > Lime Columns is not applied to list screens while Admin Columns (Pro) is active. Deactivate it to switch over; the settings screen and the importer remain available meanwhile.
-
-## Extending
-
-Column types, list screens and integrations are small classes behind interfaces (`ColumnType`, `ListScreen`, `Integration`, `Feature`). See [`docs/architecture.md`](docs/architecture.md) and [`docs/extending.md`](docs/extending.md) (currently written in Japanese).
-
-## Development
-
-For contributors only — not needed to use the plugin.
-
-```bash
-composer install
-vendor/bin/phpunit
-```
-
-The source follows PSR-4 (`Lime Columns\` → `src/`).
 
 ## Roadmap
 

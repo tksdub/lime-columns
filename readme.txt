@@ -12,7 +12,7 @@ Freely configure the columns of admin list tables: add, reorder, resize, sort, s
 
 == Description ==
 
-Lime Columns lets you manage the columns of the WordPress admin list tables from a single settings screen. It is written from scratch and does not reuse code or assets from other column-management plugins.
+Lime Columns lets you manage the columns of the WordPress admin list tables from a single settings screen. It is written from scratch and does not reuse code or assets from other column-management plugins. Made in Japan.
 
 **Features**
 

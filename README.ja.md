@@ -4,7 +4,7 @@
 
 WordPress 管理画面の一覧テーブルの列を管理する、独立したプラグインです。列の追加・削除・並び替え・幅の調整、並び替え・検索・エクスポートの可否、カスタムフィールド（ACF を含む）の表示を、1 つの設定画面からまとめて行えます。
 
-Lime Columns はゼロから書かれており、他のカラム管理プラグインのコードやアセットは一切流用していません。
+Lime Columns はゼロから書かれており、他のカラム管理プラグインのコードやアセットは一切流用していません。日本産プラグインです。
 
 > **状態:** 開発初期（v0.1.0）。API や保存形式は変更される可能性があります。
 
@@ -45,21 +45,6 @@ Lime Columns はゼロから書かれており、他のカラム管理プラグ�
 Admin Columns から移行するには、**Import from Admin Columns** を開き、**Preview** で変換できる列を確認してから **Import** を実行します。Lime Columns の設定がすでにある画面を置き換えるには、**Overwrite** をオンにします。
 
 > Admin Columns（Pro）が有効な間、Lime Columns は一覧画面には適用されません。切り替えるときは Admin Columns を無効化してください。それまでも、設定画面とインポート機能は使えます。
-
-## 拡張
-
-列タイプ・一覧画面・連携は、インターフェース（`ColumnType` / `ListScreen` / `Integration` / `Feature`）の背後にある小さなクラスです。詳しくは [`docs/architecture.md`](docs/architecture.md) と [`docs/extending.md`](docs/extending.md) を参照してください（日本語）。
-
-## 開発
-
-開発者向けの手順です。プラグインを使うだけなら不要です。
-
-```bash
-composer install
-vendor/bin/phpunit
-```
-
-ソースは PSR-4（`Lime Columns\` → `src/`）に従っています。
 
 ## ロードマップ
 

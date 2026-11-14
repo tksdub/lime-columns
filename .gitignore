@@ -3,3 +3,7 @@ vendor/
 .DS_Store
 .phpunit.result.cache
 composer.lock
+docs/
+tests/
+composer.json
+phpunit.xml.dist
