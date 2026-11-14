@@ -27,7 +27,7 @@ final class CustomField extends AbstractColumnType
                 'options' => ['text' => 'Text', 'numeric' => 'Number', 'date' => 'Date', 'url' => 'URL', 'image' => 'Image (attachment ID)', 'boolean' => 'True/False', 'json' => 'Array (joined)']],
             ['name' => 'date_mode', 'label' => __('Date format', 'lime-columns'), 'type' => 'select', 'default' => 'wp', 'show_if' => ['field_type' => 'date'],
                 'options' => ['wp' => 'WordPress', 'acf' => 'Date only', 'custom' => 'Custom', 'diff' => 'Relative']],
-            ['name' => 'date_format', 'label' => 'PHP date format', 'type' => 'text', 'default' => 'Y-m-d', 'show_if' => ['date_mode' => 'custom']],
+            ['name' => 'date_format', 'label' => __('PHP date format', 'lime-columns'), 'type' => 'text', 'default' => 'Y-m-d', 'show_if' => ['date_mode' => 'custom']],
             ['name' => 'words', 'label' => __('Word limit (0 = none)', 'lime-columns'), 'type' => 'number', 'default' => 0, 'show_if' => ['field_type' => 'text']],
         ];
     }

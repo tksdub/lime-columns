@@ -96,7 +96,7 @@ function renderMain() {
         if (state.data.acf.fields.length) sel.append(h('optgroup', { label: 'ACF' },
           state.data.acf.fields.map((f) => h('option', { value: 'acf:' + f.key }, `${f.group} › ${f.label}`))));
         const foreign = Object.entries(state.data.foreign).filter(([k]) => !used.has(k));
-        if (foreign.length) sel.append(h('optgroup', { label: 'Other plugins' },
+        if (foreign.length) sel.append(h('optgroup', { label: t('Other plugins') },
           foreign.map(([k, l]) => h('option', { value: 'foreign:' + k }, l))));
         return [sel, h('button', { class: 'button', type: 'button', onclick: () => addColumn(sel.value) }, t('Add column'))];
       })()),

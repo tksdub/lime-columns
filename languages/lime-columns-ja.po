@@ -1,0 +1,273 @@
+# Copyright (C) 2026 Takuma Shigematsu
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: LimeColumns 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/lime-columns\n"
+"Last-Translator: LimeColumns contributors\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-14T06:54:32+00:00\n"
+"PO-Revision-Date: 2026-11-14 16:00+0900\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: lime-columns\n"
+
+#. Plugin Name of the plugin
+#: lime-columns.php
+msgid "LimeColumns"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: lime-columns.php
+msgid "https://github.com/tksdub/lime-columns/"
+msgstr ""
+
+#. Description of the plugin
+#: lime-columns.php
+msgid "A standalone plugin to freely configure the columns of admin list tables."
+msgstr "管理画面の一覧テーブルの列を自由に構成する、独立したカラム管理プラグイン。"
+
+#. Author of the plugin
+#: lime-columns.php
+msgid "Takuma Shigematsu"
+msgstr ""
+
+#. Author URI of the plugin
+#: lime-columns.php
+msgid "https://lime.co.jp"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:43
+msgid "List screen"
+msgstr "一覧画面"
+
+#: src/Admin/SettingsPage.php:44
+msgid "Columns"
+msgstr "列"
+
+#: src/Admin/SettingsPage.php:45
+msgid "Add column"
+msgstr "列を追加"
+
+#: src/Admin/SettingsPage.php:46
+msgid "Save"
+msgstr "保存"
+
+#: src/Admin/SettingsPage.php:47
+msgid "Saved"
+msgstr "保存しました"
+
+#: src/Admin/SettingsPage.php:48
+msgid "Reset to default"
+msgstr "初期設定に戻す"
+
+#: src/Admin/SettingsPage.php:49
+msgid "Remove"
+msgstr "削除"
+
+#: src/Admin/SettingsPage.php:50
+msgid "Label"
+msgstr "ラベル"
+
+#: src/Admin/SettingsPage.php:51
+msgid "Width"
+msgstr "幅"
+
+#: src/Admin/SettingsPage.php:52
+msgid "Sortable"
+msgstr "並び替え可能"
+
+#: src/Admin/SettingsPage.php:53
+msgid "Searchable"
+msgstr "検索可能"
+
+#: src/Admin/SettingsPage.php:54
+msgid "Export (CSV)"
+msgstr "エクスポート（CSV）"
+
+#: src/Admin/SettingsPage.php:55
+msgid "Active"
+msgstr "有効"
+
+#: src/Admin/SettingsPage.php:56
+msgid "Inactive"
+msgstr "無効"
+
+#: src/Admin/SettingsPage.php:57
+msgid "Default sort"
+msgstr "既定の並び順"
+
+#: src/Admin/SettingsPage.php:58
+msgid "None"
+msgstr "なし"
+
+#: src/Admin/SettingsPage.php:59
+msgid "Ascending"
+msgstr "昇順"
+
+#: src/Admin/SettingsPage.php:60
+msgid "Descending"
+msgstr "降順"
+
+#: src/Admin/SettingsPage.php:61
+msgid "Apply to roles (empty = everyone)"
+msgstr "適用するロール（空欄＝全員）"
+
+#: src/Admin/SettingsPage.php:62
+msgid "Import from Admin Columns"
+msgstr "Admin Columns からインポート"
+
+#: src/Admin/SettingsPage.php:63
+msgid "Preview (dry run)"
+msgstr "プレビュー（ドライラン）"
+
+#: src/Admin/SettingsPage.php:64
+msgid "Import"
+msgstr "インポート"
+
+#: src/Admin/SettingsPage.php:65
+msgid "Overwrite existing settings"
+msgstr "既存の設定を上書き"
+
+#: src/Admin/SettingsPage.php:66
+msgid "Choose a column type"
+msgstr "列タイプを選択"
+
+#: src/Admin/SettingsPage.php:67
+msgid "Reset this list to defaults?"
+msgstr "この一覧を初期設定に戻しますか？"
+
+#: src/Admin/SettingsPage.php:68
+msgid "Not configured"
+msgstr "未設定"
+
+#: src/Admin/SettingsPage.php:69
+msgid "Other plugins"
+msgstr "他のプラグイン"
+
+#: src/Column/Types/Common/CustomField.php:18
+msgid "Custom field"
+msgstr "カスタムフィールド"
+
+#: src/Column/Types/Common/CustomField.php:25
+msgid "Meta key"
+msgstr "メタキー"
+
+#: src/Column/Types/Common/CustomField.php:26
+msgid "Type"
+msgstr "タイプ"
+
+#: src/Column/Types/Common/CustomField.php:28
+#: src/Column/Types/Post/PostField.php:40
+#: src/Column/Types/User/UserField.php:32
+#: src/Integrations/Acf/AcfFieldColumn.php:34
+msgid "Date format"
+msgstr "日付の形式"
+
+#: src/Column/Types/Common/CustomField.php:30
+#: src/Column/Types/Post/LatestComment.php:21
+#: src/Column/Types/Post/PostField.php:42
+#: src/Column/Types/User/UserField.php:34
+#: src/Integrations/Acf/AcfFieldColumn.php:36
+msgid "PHP date format"
+msgstr "PHP の日付フォーマット"
+
+#: src/Column/Types/Common/CustomField.php:31
+msgid "Word limit (0 = none)"
+msgstr "単語数の上限（0＝制限なし）"
+
+#: src/Column/Types/Common/CustomField.php:70
+#: src/Integrations/Acf/AcfFieldColumn.php:125
+msgid "Yes"
+msgstr "はい"
+
+#: src/Column/Types/Common/CustomField.php:70
+#: src/Integrations/Acf/AcfFieldColumn.php:125
+msgid "No"
+msgstr "いいえ"
+
+#: src/Column/Types/Common/Foreign.php:15
+msgid "Column from another plugin/theme"
+msgstr "他のプラグイン／テーマの列"
+
+#: src/Column/Types/Post/Author.php:9
+msgid "Author (WP default)"
+msgstr "投稿者（WP標準）"
+
+#: src/Column/Types/Post/AuthorDisplay.php:13
+msgid "Author (custom display)"
+msgstr "投稿者（カスタム表示）"
+
+#: src/Column/Types/Post/AuthorDisplay.php:18
+msgid "Display as"
+msgstr "表示形式"
+
+#: src/Column/Types/Post/AuthorDisplay.php:20
+msgid "Link to"
+msgstr "リンク先"
+
+#: src/Column/Types/Post/Comments.php:9
+msgid "Comments (WP default)"
+msgstr "コメント（WP標準）"
+
+#: src/Column/Types/Post/Date.php:9
+msgid "Date (WP default)"
+msgstr "日付（WP標準）"
+
+#: src/Column/Types/Post/LatestComment.php:14
+msgid "Latest comment"
+msgstr "最新コメント"
+
+#: src/Column/Types/Post/LatestComment.php:19
+msgid "Display"
+msgstr "表示"
+
+#: src/Column/Types/Post/PostField.php:45
+msgid "Word limit"
+msgstr "単語数の上限"
+
+#: src/Column/Types/Post/Taxonomy.php:13
+#: src/Column/Types/Post/Taxonomy.php:21
+msgid "Taxonomy"
+msgstr "タクソノミー"
+
+#: src/Column/Types/Post/Thumbnail.php:13
+msgid "Featured image"
+msgstr "アイキャッチ画像"
+
+#: src/Column/Types/Post/Thumbnail.php:17
+msgid "Image size"
+msgstr "画像サイズ"
+
+#: src/Column/Types/Post/Title.php:9
+msgid "Title"
+msgstr "タイトル"
+
+#: src/Features/Export/ExportFeature.php:43
+msgid "Export CSV"
+msgstr "CSVをエクスポート"
+
+#: src/Features/Export/ExportFeature.php:52
+msgid "You are not allowed to export this list."
+msgstr "この一覧をエクスポートする権限がありません。"
+
+#: src/Integrations/Acf/AcfFieldColumn.php:18
+#: src/Integrations/Acf/AcfFieldColumn.php:32
+msgid "ACF field"
+msgstr "ACFフィールド"
+
+#: src/Integrations/Acf/AcfFieldColumn.php:33
+msgid "Repeater sub field key"
+msgstr "リピーターのサブフィールドキー"
+
+#: src/ListScreen/PostListScreen.php:19
+msgid "Post types"
+msgstr "投稿タイプ"
+
+#: src/Plugin.php:103
+msgid "Admin Columns Pro is active, so LimeColumns is not applied to list screens. Deactivate it to switch over (settings and the importer remain available)."
+msgstr "Admin Columns Pro が有効なため、LimeColumns は一覧画面に適用されていません。切り替えるには Admin Columns Pro を無効化してください（設定画面とインポート機能は引き続き使えます）。"

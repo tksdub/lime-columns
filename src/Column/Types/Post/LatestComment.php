@@ -18,7 +18,7 @@ final class LatestComment extends AbstractColumnType
         return [
             ['name' => 'property', 'label' => __('Display', 'lime-columns'), 'type' => 'select', 'default' => 'date',
                 'options' => ['date' => 'Date', 'author' => 'Author', 'comment' => 'Comment']],
-            ['name' => 'date_format', 'label' => 'PHP date format', 'type' => 'text', 'default' => 'Y-m-d H:i:s', 'show_if' => ['property' => 'date']],
+            ['name' => 'date_format', 'label' => __('PHP date format', 'lime-columns'), 'type' => 'text', 'default' => 'Y-m-d H:i:s', 'show_if' => ['property' => 'date']],
         ];
     }
 

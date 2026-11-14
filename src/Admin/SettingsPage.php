@@ -66,6 +66,7 @@ final class SettingsPage
             'Choose a column type' => __('Choose a column type', 'lime-columns'),
             'Confirm reset' => __('Reset this list to defaults?', 'lime-columns'),
             'Not configured' => __('Not configured', 'lime-columns'),
+            'Other plugins' => __('Other plugins', 'lime-columns'),
         ];
     }
 }

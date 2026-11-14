@@ -1,7 +1,10 @@
 <?php
 /**
  * Plugin Name: LimeColumns
- * Description: 管理画面の一覧テーブルの列を自由に構成する、独立したカラム管理プラグイン。
+ * Description: A standalone plugin to freely configure the columns of admin list tables.
+ * Plugin URI: https://github.com/tksdub/lime-columns/
+ * Author: Takuma Shigematsu
+ * Author URI: https://lime.co.jp
  * Version: 0.1.0
  * Requires at least: 6.5
  * Requires PHP: 8.1

@@ -33,7 +33,7 @@ final class AcfFieldColumn extends AbstractColumnType
             ['name' => 'sub_field', 'label' => __('Repeater sub field key', 'lime-columns'), 'type' => 'text', 'help' => 'field_xxxx'],
             ['name' => 'date_mode', 'label' => __('Date format', 'lime-columns'), 'type' => 'select', 'default' => 'acf',
                 'options' => ['acf' => 'WordPress (date only)', 'wp' => 'WordPress (date + time)', 'custom' => 'Custom', 'diff' => 'Relative']],
-            ['name' => 'date_format', 'label' => 'PHP date format', 'type' => 'text', 'default' => 'Y-m-d', 'show_if' => ['date_mode' => 'custom']],
+            ['name' => 'date_format', 'label' => __('PHP date format', 'lime-columns'), 'type' => 'text', 'default' => 'Y-m-d', 'show_if' => ['date_mode' => 'custom']],
         ];
     }
 

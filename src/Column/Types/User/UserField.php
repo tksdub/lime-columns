@@ -31,7 +31,7 @@ final class UserField extends AbstractColumnType
         return $this->kind === 'registered' ? [
             ['name' => 'date_mode', 'label' => __('Date format', 'lime-columns'), 'type' => 'select', 'default' => 'wp',
                 'options' => ['wp' => 'WordPress', 'custom' => 'Custom', 'diff' => 'Relative']],
-            ['name' => 'date_format', 'label' => 'PHP date format', 'type' => 'text', 'default' => 'Y-m-d', 'show_if' => ['date_mode' => 'custom']],
+            ['name' => 'date_format', 'label' => __('PHP date format', 'lime-columns'), 'type' => 'text', 'default' => 'Y-m-d', 'show_if' => ['date_mode' => 'custom']],
         ] : [];
     }
 

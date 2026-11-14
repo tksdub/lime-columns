@@ -39,7 +39,7 @@ final class PostField extends AbstractColumnType
             'modified' => [
                 ['name' => 'date_mode', 'label' => __('Date format', 'lime-columns'), 'type' => 'select', 'default' => 'wp',
                     'options' => ['wp' => 'WordPress', 'custom' => 'Custom', 'diff' => 'Relative']],
-                ['name' => 'date_format', 'label' => 'PHP date format', 'type' => 'text', 'default' => 'Y-m-d H:i', 'show_if' => ['date_mode' => 'custom']],
+                ['name' => 'date_format', 'label' => __('PHP date format', 'lime-columns'), 'type' => 'text', 'default' => 'Y-m-d H:i', 'show_if' => ['date_mode' => 'custom']],
             ],
             'excerpt', 'content' => [
                 ['name' => 'words', 'label' => __('Word limit', 'lime-columns'), 'type' => 'number', 'default' => 30],
