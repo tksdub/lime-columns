@@ -1,0 +1,57 @@
+.lime-columns{--lc-accent:#2271b1;--lc-accent-soft:#f0f6fc;--lc-border:#dcdcde;--lc-divider:#f0f0f1;--lc-text-sub:#646970;--lc-radius:6px;--lc-shadow:0 1px 2px rgba(0,0,0,.04)}
+.lime-columns [hidden]{display:none!important}
+.lime-columns .lc-layout{display:flex;gap:24px;align-items:flex-start;margin-top:16px}
+
+/* サイドバー */
+.lime-columns .lc-side{width:230px;flex:none;background:#fff;border:1px solid var(--lc-border);border-radius:var(--lc-radius);box-shadow:var(--lc-shadow);padding:6px 10px 10px}
+.lime-columns .lc-side h3{margin:14px 0 4px;padding:0 8px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--lc-text-sub)}
+.lime-columns .lc-side ul{margin:0}
+.lime-columns .lc-side li{margin:0}
+.lime-columns .lc-side li a{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;border-left:3px solid transparent;border-radius:4px;text-decoration:none;color:#2c3338;transition:background .12s}
+.lime-columns .lc-side li a:hover{background:#f6f7f7}
+.lime-columns .lc-side li.is-active a{background:var(--lc-accent-soft);border-left-color:var(--lc-accent);color:var(--lc-accent);font-weight:600}
+.lime-columns .lc-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#00a32a;margin-left:6px;flex:none}
+
+/* メイン */
+.lime-columns .lc-main{flex:1;min-width:0;background:#fff;border:1px solid var(--lc-border);border-radius:var(--lc-radius);box-shadow:var(--lc-shadow);padding:18px 22px}
+.lime-columns .lc-bar{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--lc-divider)}
+.lime-columns .lc-bar h2{margin:0;flex:1;font-size:18px}
+.lime-columns .lc-badge{background:#fcf0c3;padding:2px 10px;border-radius:999px;font-size:12px}
+
+/* カラム一覧 */
+.lime-columns .lc-cols{list-style:none;margin:16px 0;padding:0;display:grid;gap:8px}
+.lime-columns .lc-col{border:1px solid var(--lc-border);border-radius:var(--lc-radius);background:#fff;box-shadow:var(--lc-shadow);transition:border-color .12s,box-shadow .12s}
+.lime-columns .lc-col:hover{border-color:#a7aaad}
+.lime-columns .lc-col:has(.lc-body:not([hidden])){border-color:var(--lc-accent);box-shadow:0 0 0 1px var(--lc-accent)}
+.lime-columns .lc-col.is-drag{opacity:.4;border-style:dashed}
+.lime-columns .lc-head{display:flex;align-items:center;gap:10px;padding:6px 12px}
+.lime-columns .lc-grip{cursor:grab;color:#a7aaad;font-size:16px;line-height:1;padding:4px 2px;user-select:none}
+.lime-columns .lc-col:hover .lc-grip{color:var(--lc-accent)}
+.lime-columns .lc-grip:active{cursor:grabbing}
+.lime-columns .lc-title{flex:1;display:flex;align-items:center;gap:8px;text-align:left;background:none;border:0;cursor:pointer;font-size:14px;font-weight:500;padding:6px 0}
+.lime-columns .lc-title::before{content:"";flex:none;width:6px;height:6px;border-right:2px solid #8c8f94;border-bottom:2px solid #8c8f94;transform:rotate(-45deg);transition:transform .15s}
+.lime-columns .lc-col:has(.lc-body:not([hidden])) .lc-title::before{transform:rotate(45deg)}
+.lime-columns .lc-title small{color:var(--lc-text-sub);font-weight:400;background:#f6f7f7;border-radius:999px;padding:1px 8px}
+.lime-columns .lc-head .button-link{min-width:26px;height:26px;border-radius:4px;text-align:center;text-decoration:none;color:var(--lc-text-sub)}
+.lime-columns .lc-head .button-link:hover:not(:disabled){background:var(--lc-accent-soft);color:var(--lc-accent)}
+.lime-columns .lc-head .button-link:disabled{opacity:.35;cursor:default}
+.lime-columns .lc-head .button-link-delete{margin-left:6px}
+
+/* カラム展開部分 */
+.lime-columns .lc-body{padding:14px 16px 16px;border-top:1px solid var(--lc-divider);display:grid;gap:12px;background:#fcfcfc;border-radius:0 0 var(--lc-radius) var(--lc-radius)}
+.lime-columns .lc-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 28px}
+.lime-columns .lc-field{display:block}
+.lime-columns .lc-inline{margin-right:14px;white-space:nowrap}
+
+/* 追加・全体設定 */
+.lime-columns .lc-add{margin:16px 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.lime-columns .lc-settings{border:1px solid var(--lc-border);border-radius:var(--lc-radius);padding:14px 16px;display:grid;gap:12px;background:#fcfcfc}
+.lime-columns .lc-actions{display:flex;align-items:center;gap:8px;margin:18px 0 0;padding-top:14px;border-top:1px solid var(--lc-divider)}
+.lime-columns .lc-notice{margin-left:12px;color:#007017}
+
+/* インポート */
+.lime-columns .lc-import{margin-top:24px;background:#fff;border:1px solid var(--lc-border);border-radius:var(--lc-radius);box-shadow:var(--lc-shadow);padding:10px 18px}
+.lime-columns .lc-import summary{cursor:pointer;font-weight:600}
+.lime-columns .lc-report{white-space:pre-wrap;background:#f6f7f7;border-radius:4px;padding:10px;max-height:360px;overflow:auto}
+.lime-empty{color:#a7aaad}
+@media (max-width:782px){.lime-columns .lc-layout{flex-direction:column}.lime-columns .lc-side{width:auto}}
