@@ -1,5 +1,5 @@
 === LimeColumns ===
-Contributors: tksdub
+Contributors: takuma227
 Tags: columns, list table, custom fields, acf, admin
 Requires at least: 6.5
 Tested up to: 7.1
