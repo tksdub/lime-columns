@@ -15,13 +15,12 @@ final class PostListScreen implements ListScreen
     }
 
     public function key(): string { return 'post:' . $this->postType->name; }
-    public function label(): string
+    public function label(): string { return (string) $this->postType->labels->name; }
+    public function group(): string
     {
-        $name = (string) $this->postType->labels->name;
-        // ACF の管理用投稿タイプは、通常の投稿タイプと区別できるよう接頭辞を付ける。
-        return str_starts_with($this->postType->name, 'acf-') ? 'ACF: ' . $name : $name;
+        // ACF の管理用投稿タイプは、通常の投稿タイプと別のグループにまとめる。
+        return str_starts_with($this->postType->name, 'acf-') ? 'ACF' : __('Post types', 'lime-columns');
     }
-    public function group(): string { return __('Post types', 'lime-columns'); }
     public function objectType(): string { return 'post'; }
 
     public function capability(): string { return (string) $this->postType->cap->edit_posts; }
