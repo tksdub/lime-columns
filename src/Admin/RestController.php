@@ -84,8 +84,13 @@ final class RestController
         $columns = [];
         $seen = [];
         foreach ((array) $req->get_param('columns') as $raw) {
-            if (!is_array($raw) || !isset($types[$raw['type'] ?? ''])) {
+            if (!is_array($raw) || !is_string($raw['type'] ?? null) || !isset($types[$raw['type']])) {
                 continue;
+            }
+            foreach (['name', 'label', 'width'] as $k) {
+                if (isset($raw[$k]) && !is_scalar($raw[$k])) {
+                    unset($raw[$k]); // 配列等の不正値は無視（Array to string 警告の防止）
+                }
             }
             $type = $types[$raw['type']];
             $col = Column::fromArray($raw);
