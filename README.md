@@ -65,6 +65,10 @@ The source follows PSR-4 (`LimeColumns\` → `src/`).
 
 Inline edit, bulk edit, filtering, saved views, conditional formatting, and list screens for media, comments and taxonomies.
 
+## Disclaimer
+
+LimeColumns is not affiliated with, endorsed by, or sponsored by the developers of Admin Columns. "Admin Columns" is used in this project only to refer to the source of the settings that the importer reads.
+
 ## License
 
 GPL-2.0-or-later. See [LICENSE](LICENSE).
