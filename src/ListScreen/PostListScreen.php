@@ -98,14 +98,14 @@ final class PostListScreen implements ListScreen
     public function nativeColumns(): array
     {
         $pt = $this->postType->name;
-        $cols = ['title' => __('Title')];
+        $cols = ['title' => __('Title', 'default')];
         if (post_type_supports($pt, 'author')) {
-            $cols['author'] = __('Author');
+            $cols['author'] = __('Author', 'default');
         }
         if (post_type_supports($pt, 'comments')) {
-            $cols['comments'] = __('Comments');
+            $cols['comments'] = __('Comments', 'default');
         }
-        $cols['date'] = __('Date');
+        $cols['date'] = __('Date', 'default');
         return $cols;
     }
 

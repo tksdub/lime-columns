@@ -11,12 +11,12 @@ use LimeColumns\Formatter\Format;
 final class PostField extends AbstractColumnType
 {
     private const DEFS = [
-        'post_id' => ['ID', 'ID', 'ID'],
-        'slug' => ['Slug', 'post_name', 'name'],
-        'status' => ['Status', 'post_status', 'post_status'],
-        'modified' => ['Last modified', 'post_modified', 'modified'],
-        'excerpt' => ['Excerpt', 'post_excerpt', null],
-        'content' => ['Content', 'post_content', null],
+        'post_id' => ['ID', 'ID'],
+        'slug' => ['post_name', 'name'],
+        'status' => ['post_status', 'post_status'],
+        'modified' => ['post_modified', 'modified'],
+        'excerpt' => ['post_excerpt', null],
+        'content' => ['post_content', null],
     ];
 
     public function __construct(private readonly string $kind)
@@ -30,7 +30,14 @@ final class PostField extends AbstractColumnType
 
     public function label(): string
     {
-        return __(self::DEFS[$this->kind][0], 'lime-columns');
+        return match ($this->kind) {
+            'post_id' => __('ID', 'lime-columns'),
+            'slug' => __('Slug', 'lime-columns'),
+            'status' => __('Status', 'lime-columns'),
+            'modified' => __('Last modified', 'lime-columns'),
+            'excerpt' => __('Excerpt', 'lime-columns'),
+            'content' => __('Content', 'lime-columns'),
+        };
     }
 
     public function fields(): array
@@ -51,7 +58,7 @@ final class PostField extends AbstractColumnType
     public function capabilities(): array
     {
         return self::caps(
-            sort: self::DEFS[$this->kind][2] !== null,
+            sort: self::DEFS[$this->kind][1] !== null,
             search: in_array($this->kind, ['excerpt', 'content'], true),
         );
     }
@@ -62,7 +69,7 @@ final class PostField extends AbstractColumnType
         if (!$post) {
             return '';
         }
-        $prop = self::DEFS[$this->kind][1];
+        $prop = self::DEFS[$this->kind][0];
         $raw = (string) $post->{$prop};
         return match ($this->kind) {
             'status' => (string) (get_post_status_object($raw)->label ?? $raw),
@@ -74,7 +81,7 @@ final class PostField extends AbstractColumnType
 
     public function sortArgs(Column $column): ?array
     {
-        $o = self::DEFS[$this->kind][2];
+        $o = self::DEFS[$this->kind][1];
         return $o === null ? null : ['orderby' => $o];
     }
 }

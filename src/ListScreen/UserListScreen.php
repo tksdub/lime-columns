@@ -11,8 +11,8 @@ use LimeColumns\Contracts\ListScreen;
 final class UserListScreen implements ListScreen
 {
     public function key(): string { return 'user'; }
-    public function label(): string { return __('Users'); }
-    public function group(): string { return __('Users'); }
+    public function label(): string { return __('Users', 'default'); }
+    public function group(): string { return __('Users', 'default'); }
     public function objectType(): string { return 'user'; }
 
     public function capability(): string { return 'list_users'; }
@@ -81,7 +81,7 @@ final class UserListScreen implements ListScreen
 
     public function nativeColumns(): array
     {
-        return ['username' => __('Username'), 'name' => __('Name'), 'email' => __('Email'), 'role' => __('Role'), 'posts' => __('Posts')];
+        return ['username' => __('Username', 'default'), 'name' => __('Name', 'default'), 'email' => __('Email', 'default'), 'role' => __('Role', 'default'), 'posts' => __('Posts', 'default')];
     }
 
     public function exportIds(array $request): array

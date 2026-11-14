@@ -11,10 +11,10 @@ use LimeColumns\Formatter\Format;
 final class UserField extends AbstractColumnType
 {
     private const DEFS = [
-        'user_id' => ['User ID', 'ID', 'ID'],
-        'registered' => ['Registered', 'user_registered', 'registered'],
-        'user_url' => ['Website', 'user_url', 'url'],
-        'display_name' => ['Display name', 'display_name', 'display_name'],
+        'user_id' => ['ID', 'ID'],
+        'registered' => ['user_registered', 'registered'],
+        'user_url' => ['user_url', 'url'],
+        'display_name' => ['display_name', 'display_name'],
     ];
 
     public function __construct(private readonly string $kind)
@@ -22,7 +22,15 @@ final class UserField extends AbstractColumnType
     }
 
     public function id(): string { return $this->kind; }
-    public function label(): string { return __(self::DEFS[$this->kind][0], 'lime-columns'); }
+    public function label(): string
+    {
+        return match ($this->kind) {
+            'user_id' => __('User ID', 'lime-columns'),
+            'registered' => __('Registered', 'lime-columns'),
+            'user_url' => __('Website', 'lime-columns'),
+            'display_name' => __('Display name', 'lime-columns'),
+        };
+    }
     protected function objectTypes(): array { return ['user']; }
     public function capabilities(): array { return self::caps(sort: true); }
 
@@ -37,7 +45,7 @@ final class UserField extends AbstractColumnType
 
     public function sortArgs(Column $column): ?array
     {
-        return ['orderby' => self::DEFS[$this->kind][2]];
+        return ['orderby' => self::DEFS[$this->kind][1]];
     }
 
     public function value(Column $column, int $id): string
@@ -46,7 +54,7 @@ final class UserField extends AbstractColumnType
         if (!$u) {
             return '';
         }
-        $raw = (string) $u->{self::DEFS[$this->kind][1]};
+        $raw = (string) $u->{self::DEFS[$this->kind][0]};
         return $this->kind === 'registered'
             ? Format::date($raw, (string) $column->setting('date_mode', 'wp'), (string) $column->setting('date_format', ''))
             : $raw;

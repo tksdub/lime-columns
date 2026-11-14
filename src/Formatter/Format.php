@@ -22,7 +22,7 @@ final class Format
             return (string) $value;
         }
         return match ($mode) {
-            'diff' => human_time_diff($ts, time()) . ' ' . ($ts > time() ? __('from now') : __('ago')),
+            'diff' => human_time_diff($ts, time()) . ' ' . ($ts > time() ? __('from now', 'default') : __('ago', 'default')),
             'custom' => wp_date($custom !== '' ? $custom : 'Y-m-d', $ts) ?: '',
             'acf' => wp_date(get_option('date_format'), $ts) ?: '',
             default => wp_date(get_option('date_format') . ' ' . get_option('time_format'), $ts) ?: '',

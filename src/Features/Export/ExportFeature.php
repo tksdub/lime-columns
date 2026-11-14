@@ -59,7 +59,7 @@ final class ExportFeature implements Feature
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename="' . sanitize_file_name(str_replace(':', '-', $key) . '-' . wp_date('Ymd-His') . '.csv') . '"');
         $out = fopen('php://output', 'w');
-        fwrite($out, "\xEF\xBB\xBF"); // Excel向けUTF-8 BOM
+        fwrite($out, "\xEF\xBB\xBF"); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite -- php://output へのCSVストリーム出力。Excel向けUTF-8 BOM
         fputcsv($out, array_map(fn ($c) => $this->plain($c->label) ?: $c->name, $cols));
         foreach ($ids as $id) {
             $row = [];
@@ -68,7 +68,7 @@ final class ExportFeature implements Feature
             }
             fputcsv($out, $row);
         }
-        fclose($out);
+        fclose($out); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- php://output のストリームを閉じる
         exit;
     }
 
