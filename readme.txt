@@ -20,7 +20,7 @@ Lime Columns lets you manage the columns of the WordPress admin list tables from
 * **Post and user list tables** - per post type, plus the Users screen.
 * **28 column types** - native WordPress columns, post fields, taxonomies, thumbnails, latest comment, custom fields, user fields and more.
 * **Sorting** - sort by any sortable column, including meta values. Empty values always sort last and rows are never dropped.
-* **Search** - include selected columns in the list-table search: custom field / ACF values, author names and taxonomy term names.
+* **Search** - works with the native WordPress search box, so there is no separate search form to learn. Include selected columns in the built-in search: custom field / ACF values, author names and taxonomy term names. Available on post list tables.
 * **Default sort** - set the initial order per list screen.
 * **CSV export** - export exactly what the list shows, using the same query and filters.
 * **Role restriction** - apply a configuration only to selected roles.
