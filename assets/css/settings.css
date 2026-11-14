@@ -1,10 +1,12 @@
 .lime-columns{--lc-accent:#2271b1;--lc-accent-soft:#f0f6fc;--lc-border:#dcdcde;--lc-divider:#f0f0f1;--lc-text-sub:#646970;--lc-radius:6px;--lc-shadow:0 1px 2px rgba(0,0,0,.04)}
 .lime-columns [hidden]{display:none!important}
+.lime-columns .lc-brand{display:flex;align-items:center;gap:10px;margin:0;padding:0;line-height:1}
+.lime-columns .lc-brand img{width:80px;height:80px;flex:none}
 .lime-columns .lc-layout{display:flex;gap:24px;align-items:flex-start;margin-top:16px}
 
 /* サイドバー */
 .lime-columns .lc-side{width:230px;flex:none;background:#fff;border:1px solid var(--lc-border);border-radius:var(--lc-radius);box-shadow:var(--lc-shadow);padding:6px 10px 10px}
-.lime-columns .lc-side h3{margin:14px 0 4px;padding:0 8px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--lc-text-sub)}
+.lime-columns .lc-side h3{margin:14px 0 6px;padding:6px 8px;font-size:13px;font-weight:600;color:var(--lc-accent);background:#fff;border-bottom:2px solid var(--lc-accent)}
 .lime-columns .lc-side ul{margin:0}
 .lime-columns .lc-side li{margin:0}
 .lime-columns .lc-side li a{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;border-left:3px solid transparent;border-radius:4px;text-decoration:none;color:#2c3338;transition:background .12s}
