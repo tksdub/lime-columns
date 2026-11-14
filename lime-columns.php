@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Lime Columns
- * Description: A standalone plugin to freely configure the columns of admin list tables.
+ * Description: A standalone plugin to freely configure the columns of admin list tables. Also works with the native search box. Made in Japan.
  * Plugin URI: https://github.com/tksdub/lime-columns/
  * Author: Takuma Shigematsu@Lime
  * Author URI: https://lime.co.jp
