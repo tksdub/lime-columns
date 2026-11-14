@@ -42,6 +42,9 @@
 /* カラム展開部分 */
 .lime-columns .lc-body{padding:14px 16px 16px;border-top:1px solid var(--lc-divider);display:grid;gap:12px;background:#fcfcfc;border-radius:0 0 var(--lc-radius) var(--lc-radius)}
 .lime-columns .lc-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 28px}
+.lime-columns .lc-row label{display:inline-flex;align-items:center;gap:6px}
+.lime-columns .lc-row input[type=text],.lime-columns .lc-row input[type=number],.lime-columns .lc-row select{box-sizing:border-box;height:32px;min-height:32px;margin:0;padding:0 8px;border:1px solid #8c8f94;border-radius:var(--lc-radius);font-size:14px;line-height:30px;vertical-align:middle}
+.lime-columns .lc-row select{padding-right:28px}
 .lime-columns .lc-field{display:block}
 .lime-columns .lc-inline{margin-right:14px;white-space:nowrap}
 
