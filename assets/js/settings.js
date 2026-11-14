@@ -170,7 +170,8 @@ function flag(col, key, label, ty) {
 }
 
 function renderFields(col, ty) {
-  col.settings ??= {};
+  // 空の設定は PHP から [] で届く。配列のままだと名前付きの値が JSON に載らず保存されない。
+  if (!col.settings || Array.isArray(col.settings)) col.settings = {};
   const wrap = h('div', { class: 'lc-fields' });
   for (const f of ty?.fields ?? []) {
     const val = col.settings[f.name] ?? f.default ?? '';
