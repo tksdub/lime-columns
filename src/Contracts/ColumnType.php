@@ -40,4 +40,10 @@ interface ColumnType
 
     /** 検索対象にするメタキー。 */
     public function searchMetaKeys(Column $column): array;
+
+    /**
+     * 検索語に一致する投稿を拾う追加のSQL条件（posts テーブルを参照する、prepare 済みの断片）。不要なら null。
+     * メタ値以外（投稿者名・タクソノミー名など）を検索対象にする列タイプが実装する。
+     */
+    public function searchClause(Column $column, string $term): ?string;
 }

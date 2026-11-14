@@ -6,6 +6,7 @@ namespace LimeColumns\Column\Types\Post;
 use LimeColumns\Column\AbstractColumnType;
 use LimeColumns\Column\Column;
 use LimeColumns\Formatter\Format;
+use LimeColumns\Support\SearchClause;
 
 final class Taxonomy extends AbstractColumnType
 {
@@ -19,6 +20,13 @@ final class Taxonomy extends AbstractColumnType
             $opts[$t->name] = $t->label;
         }
         return [['name' => 'taxonomy', 'label' => __('Taxonomy', 'lime-columns'), 'type' => 'select', 'options' => $opts]];
+    }
+
+    public function capabilities(): array { return self::caps(search: true); }
+
+    public function searchClause(Column $column, string $term): ?string
+    {
+        return SearchClause::taxonomy((string) $column->setting('taxonomy', 'category'), $term);
     }
 
     public function value(Column $column, int $id): string

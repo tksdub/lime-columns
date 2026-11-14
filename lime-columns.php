@@ -3,7 +3,7 @@
  * Plugin Name: LimeColumns
  * Description: A standalone plugin to freely configure the columns of admin list tables.
  * Plugin URI: https://github.com/tksdub/lime-columns/
- * Author: Takuma Shigematsu
+ * Author: Takuma Shigematsu@Lime
  * Author URI: https://lime.co.jp
  * Version: 0.1.0
  * Requires at least: 6.5

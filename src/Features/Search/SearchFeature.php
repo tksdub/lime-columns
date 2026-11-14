@@ -7,7 +7,7 @@ use LimeColumns\Container;
 use LimeColumns\Context;
 use LimeColumns\Contracts\Feature;
 
-/** 一覧の検索を、検索対象に指定した列（メタ値）へ拡張する。現状は投稿一覧のみ。 */
+/** 一覧の検索を、検索対象に指定した列（メタ値・投稿者名・タクソノミー名など）へ拡張する。現状は投稿一覧のみ。 */
 final class SearchFeature implements Feature
 {
     public function id(): string { return 'search'; }
@@ -20,34 +20,48 @@ final class SearchFeature implements Feature
                 return;
             }
             $keys = [];
+            $searchable = [];
             foreach ($ctx->set->columns as $col) {
-                if ($col->search && $ctx->type($col)) {
-                    $keys = array_merge($keys, $ctx->type($col)->searchMetaKeys($col));
+                $type = $col->search ? $ctx->type($col) : null;
+                if ($type) {
+                    $keys = array_merge($keys, $type->searchMetaKeys($col));
+                    $searchable[] = [$type, $col];
                 }
             }
             $keys = array_values(array_unique(array_filter($keys)));
-            if (!$keys) {
+            if (!$keys && !$searchable) {
                 return;
             }
-            $ctx->screen->attachQuery(function (object $q) use ($ctx, $keys): void {
+            $ctx->screen->attachQuery(function (object $q) use ($ctx, $keys, $searchable): void {
                 $term = $ctx->screen->searchTerm($q);
                 if ($term === '') {
                     return;
                 }
-                $cb = static function (string $search, \WP_Query $query) use (&$cb, $q, $keys, $term): string {
+                $cb = static function (string $search, \WP_Query $query) use (&$cb, $q, $keys, $searchable, $term): string {
                     if ($query !== $q || trim($search) === '') {
                         return $search;
                     }
                     remove_filter('posts_search', $cb, 20);
                     global $wpdb;
-                    $in = implode(',', array_fill(0, count($keys), '%s'));
-                    $like = '%' . $wpdb->esc_like($term) . '%';
-                    $exists = $wpdb->prepare(
-                        "EXISTS (SELECT 1 FROM {$wpdb->postmeta} lm WHERE lm.post_id = {$wpdb->posts}.ID AND lm.meta_key IN ($in) AND lm.meta_value LIKE %s)", // phpcs:ignore
-                        ...array_merge($keys, [$like])
-                    );
+                    $extra = [];
+                    if ($keys) {
+                        $in = implode(',', array_fill(0, count($keys), '%s'));
+                        $like = '%' . $wpdb->esc_like($term) . '%';
+                        $extra[] = $wpdb->prepare(
+                            "EXISTS (SELECT 1 FROM {$wpdb->postmeta} lm WHERE lm.post_id = {$wpdb->posts}.ID AND lm.meta_key IN ($in) AND lm.meta_value LIKE %s)", // phpcs:ignore
+                            ...array_merge($keys, [$like])
+                        );
+                    }
+                    foreach ($searchable as [$type, $col]) {
+                        if (($clause = $type->searchClause($col, $term)) !== null) {
+                            $extra[] = $clause;
+                        }
+                    }
+                    if (!$extra) {
+                        return $search;
+                    }
                     $base = preg_replace('/^\s*AND\s*/i', '', $search);
-                    return " AND (({$base}) OR {$exists})";
+                    return " AND (({$base}) OR " . implode(' OR ', $extra) . ')';
                 };
                 add_filter('posts_search', $cb, 20, 2);
             });

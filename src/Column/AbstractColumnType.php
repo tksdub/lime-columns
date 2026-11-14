@@ -62,6 +62,11 @@ abstract class AbstractColumnType implements ColumnType
         return [];
     }
 
+    public function searchClause(Column $column, string $term): ?string
+    {
+        return null;
+    }
+
     /** @return array{sort:bool,search:bool,export:bool} */
     protected static function caps(bool $sort = false, bool $search = false, bool $export = true): array
     {

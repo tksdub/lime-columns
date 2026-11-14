@@ -5,6 +5,7 @@ namespace LimeColumns\Column\Types\Post;
 
 use LimeColumns\Column\AbstractColumnType;
 use LimeColumns\Column\Column;
+use LimeColumns\Support\SearchClause;
 
 /** 投稿者を任意のプロパティ（ログイン名等）で表示する列。 */
 final class AuthorDisplay extends AbstractColumnType
@@ -22,7 +23,8 @@ final class AuthorDisplay extends AbstractColumnType
         ];
     }
 
-    public function capabilities(): array { return self::caps(sort: true, search: false); }
+    public function capabilities(): array { return self::caps(sort: true, search: true); }
+    public function searchClause(Column $column, string $term): ?string { return SearchClause::author($term); }
     public function sortArgs(Column $column): ?array { return ['orderby' => 'author']; }
 
     public function value(Column $column, int $id): string
