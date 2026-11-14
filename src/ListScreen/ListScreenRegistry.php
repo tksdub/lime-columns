@@ -16,7 +16,7 @@ final class ListScreenRegistry
         if ($this->screens === null) {
             $list = [];
             foreach (get_post_types(['show_ui' => true], 'objects') as $pt) {
-                if ($pt->name !== 'attachment') {
+                if (!in_array($pt->name, ['attachment', 'wp_block'], true)) {
                     $list[] = new PostListScreen($pt);
                 }
             }
