@@ -19,7 +19,8 @@ final class PostListScreen implements ListScreen
     public function group(): string
     {
         // ACF の管理用投稿タイプは、通常の投稿タイプと別のグループにまとめる。
-        return str_starts_with($this->postType->name, 'acf-') ? 'ACF' : __('Post types', 'lime-columns');
+        $name = $this->postType->name;
+        return (str_starts_with($name, 'acf-') || str_starts_with($name, 'acfe-')) ? __('ACF menu', 'lime-columns') : __('Post types', 'lime-columns');
     }
     public function objectType(): string { return 'post'; }
 
