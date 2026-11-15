@@ -3,15 +3,23 @@ const boot = JSON.parse(document.getElementById('lime-columns-boot').textContent
 const t = (s) => boot.i18n[s] ?? s;
 const root = document.getElementById('lime-columns-app');
 
-async function api(path, method = 'GET', body) {
-  const res = await fetch(boot.rest + path, {
-    method,
-    headers: { 'X-WP-Nonce': boot.nonce, 'Content-Type': 'application/json' },
-    body: body ? JSON.stringify(body) : undefined,
-  });
-  const json = await res.json();
-  if (!res.ok) throw new Error(json.message || res.statusText);
-  return json;
+// 通信は WordPress 標準の admin-ajax.php（wp_ajax_*）に POST する。
+// REST API を制限する環境でも動き、パス・メソッド・URL 形式の差に左右されない。
+// 配列は max_input_vars に左右されないよう、JSON 文字列(payload)にして送る。
+async function api(action, key, payload) {
+  const form = new FormData();
+  form.set('action', action);
+  form.set('_ajax_nonce', boot.nonce);
+  if (key != null) form.set('key', key);
+  if (payload != null) form.set('payload', JSON.stringify(payload));
+  const res = await fetch(boot.ajax, { method: 'POST', credentials: 'same-origin', body: form });
+  const text = await res.text();
+  let json = null;
+  try { json = JSON.parse(text); } catch (e) { /* JSON 以外の応答（サーバーのエラーページ等） */ }
+  if (!res.ok || !json || json.success !== true) {
+    throw new Error((json && json.data && json.data.message) || res.statusText || ('HTTP ' + res.status));
+  }
+  return json.data;
 }
 
 function h(tag, attrs = {}, ...children) {
@@ -30,7 +38,7 @@ const state = { screens: [], key: null, data: null, dirty: false, notice: '' };
 const uid = () => 'c' + Math.random().toString(16).slice(2, 12);
 
 async function init() {
-  state.screens = await api('/screens');
+  state.screens = await api('lime_columns_screens');
   const saved = new URLSearchParams(location.search).get('list');
   await select(saved && state.screens.some((s) => s.key === saved) ? saved : state.screens[0]?.key);
 }
@@ -38,7 +46,7 @@ async function init() {
 async function select(key) {
   if (state.dirty && !confirm(t('Discard unsaved changes?'))) return;
   state.key = key;
-  state.data = await api('/screens/' + encodeURIComponent(key));
+  state.data = await api('lime_columns_get', key);
   state.dirty = false;
   state.notice = '';
   render();
@@ -235,7 +243,7 @@ function addColumn(v) {
 async function save() {
   const c = state.data.config;
   try {
-    const res = await api('/screens/' + encodeURIComponent(state.key), 'PUT', {
+    const res = await api('lime_columns_save', state.key, {
       title: c.title, status: c.status, settings: c.settings, columns: c.columns,
     });
     state.data.config = res.config; state.data.saved = true; state.dirty = false; toast(t('Saved'));
@@ -246,7 +254,7 @@ async function save() {
 
 async function reset() {
   if (!confirm(t('Confirm reset'))) return;
-  await api('/screens/' + encodeURIComponent(state.key), 'DELETE');
+  await api('lime_columns_reset', state.key);
   state.screens.find((s) => s.key === state.key).configured = false;
   state.dirty = false;
   await select(state.key);
@@ -258,12 +266,12 @@ function renderImport() {
   const run = async (dry) => {
     out.hidden = false; out.textContent = '…';
     try {
-      const r = await api('/import/acp', 'POST', { dry_run: dry, overwrite });
+      const r = await api('lime_columns_import', null, { dry_run: dry, overwrite });
       out.textContent = !r.source_exists ? t('Admin Columns table not found.') : r.lists.map((l) =>
         `[${l.source} → ${l.target || '-'}] ${t(l.status)}\n  ${t('Mapped')}: ${l.mapped.length}\n` +
         l.mapped.map((m) => '    ✓ ' + m).join('\n') + (l.unmapped.length ? '\n  ' + t('Unmapped') + ':\n' + l.unmapped.map((m) => '    ✗ ' + m).join('\n') : '')
       ).join('\n\n');
-      if (!dry) { state.screens = await api('/screens'); }
+      if (!dry) { state.screens = await api('lime_columns_screens'); }
     } catch (e) { out.textContent = e.message; }
   };
   return h('details', { class: 'lc-import' },

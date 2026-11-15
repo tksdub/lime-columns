@@ -28,8 +28,8 @@ final class SettingsPage
     public function render(): void
     {
         $boot = [
-            'rest' => esc_url_raw(rest_url('lime-columns/v1')),
-            'nonce' => wp_create_nonce('wp_rest'),
+            'ajax' => esc_url_raw(admin_url('admin-ajax.php')),
+            'nonce' => wp_create_nonce(AjaxController::NONCE),
             'i18n' => $this->strings(),
         ];
         printf(

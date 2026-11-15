@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LimeColumns;
 
+use LimeColumns\Admin\AjaxController;
 use LimeColumns\Admin\RestController;
 use LimeColumns\Admin\SettingsPage;
 use LimeColumns\Admin\Tools\AcpImporter;
@@ -61,6 +62,7 @@ final class Plugin
         }
 
         (new SettingsPage())->register();
+        (new AjaxController($this->c))->register();
         (new RestController($this->c))->register();
 
         if (is_admin()) {
