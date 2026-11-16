@@ -35,4 +35,32 @@ final class SearchClause
             $like
         );
     }
+
+    /**
+     * メタ値に「関連先の ID」を保存する項目（ACF の投稿オブジェクト・ユーザー・タクソノミーなど）を、関連先の名前で検索する。
+     * 保存値は ID 単体、またはシリアライズされた ID の配列。ID は完全一致で判定する（部分一致の誤ヒットを避ける）。
+     * @param 'post'|'user'|'term' $target
+     */
+    public static function reference(string $metaKey, string $target, string $term): ?string
+    {
+        global $wpdb;
+        $like = '%' . $wpdb->esc_like($term) . '%';
+        $map = [
+            'post' => [$wpdb->posts, 'ID', 'r.post_title LIKE %s', 1],
+            'user' => [$wpdb->users, 'ID', '(r.display_name LIKE %s OR r.user_login LIKE %s)', 2],
+            'term' => [$wpdb->terms, 'term_id', 'r.name LIKE %s', 1],
+        ];
+        if (!isset($map[$target])) {
+            return null;
+        }
+        [$table, $idCol, $cond, $n] = $map[$target];
+        return (string) $wpdb->prepare(
+            "EXISTS (SELECT 1 FROM {$wpdb->postmeta} rm JOIN {$table} r ON ("
+            . "rm.meta_value = CAST(r.{$idCol} AS CHAR)"
+            . " OR rm.meta_value LIKE CONCAT('%%\"', r.{$idCol}, '\"%%')"
+            . " OR rm.meta_value LIKE CONCAT('%%;i:', r.{$idCol}, ';%%'))"
+            . " WHERE rm.post_id = {$wpdb->posts}.ID AND rm.meta_key = %s AND {$cond})", // phpcs:ignore
+            ...array_merge([$metaKey], array_fill(0, $n, $like))
+        );
+    }
 }

@@ -6,6 +6,7 @@ namespace LimeColumns\Integrations\Acf;
 use LimeColumns\Column\AbstractColumnType;
 use LimeColumns\Column\Column;
 use LimeColumns\Formatter\Format;
+use LimeColumns\Support\SearchClause;
 
 /** ACFフィールドの値を、フィールド型に応じて整形して表示する。 */
 final class AcfFieldColumn extends AbstractColumnType
@@ -95,6 +96,22 @@ final class AcfFieldColumn extends AbstractColumnType
     {
         $f = $this->field($column);
         return $f && !in_array($f['type'], ['repeater', 'group', 'flexible_content'], true) ? [(string) $f['name']] : [];
+    }
+
+    /** 関連先の ID を保存する項目は、関連先の名前（投稿タイトル・ユーザー名・ターム名）でも検索できるようにする。 */
+    public function searchClause(Column $column, string $term): ?string
+    {
+        $f = $this->field($column);
+        if (!$f || $this->object !== 'post') {
+            return null;
+        }
+        $target = match ($f['type']) {
+            'post_object', 'relationship', 'page_link' => 'post',
+            'user' => 'user',
+            'taxonomy' => 'term',
+            default => null,
+        };
+        return $target ? SearchClause::reference((string) $f['name'], $target, $term) : null;
     }
 
     public function value(Column $column, int $id): string
