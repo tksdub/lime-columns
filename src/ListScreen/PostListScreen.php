@@ -3,12 +3,8 @@ declare(strict_types=1);
 
 namespace LimeColumns\ListScreen;
 
-use LimeColumns\Support\MetaSort;
-
-use LimeColumns\Contracts\ListScreen;
-
 /** 投稿タイプ別の投稿一覧（edit.php?post_type=...）。 */
-final class PostListScreen implements ListScreen
+final class PostListScreen extends WpQueryListScreen
 {
     public function __construct(private readonly \WP_Post_Type $postType)
     {
@@ -42,62 +38,6 @@ final class PostListScreen implements ListScreen
                 echo $html; // phpcs:ignore WordPress.Security.EscapeOutput -- 列タイプ側でエスケープ済み
             }
         }, 10, 2);
-    }
-
-    public function attachQuery(callable $callback): void
-    {
-        add_action('pre_get_posts', function (\WP_Query $q) use ($callback): void {
-            if ($this->isListQuery($q)) {
-                $callback($q);
-            }
-        });
-    }
-
-    public function isListQuery(object $query): bool
-    {
-        if (!$query instanceof \WP_Query) {
-            return false;
-        }
-        if ($query->get('lime_columns_list') === $this->key()) {
-            return true;
-        }
-        if (!is_admin() || !$query->is_main_query()) {
-            return false;
-        }
-        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
-        return $screen instanceof \WP_Screen && $this->matches($screen);
-    }
-
-    public function requestedOrderby(object $query): string
-    {
-        $o = $query->get('orderby');
-        return is_string($o) ? $o : '';
-    }
-
-    public function applyOrder(object $query, array $args): void
-    {
-        global $wpdb;
-        $args = MetaSort::normalize($args, 'post');
-        if (isset($args['orderby_sql'])) {
-            $clause = MetaSort::clause((string) $args['orderby_sql'], (string) $query->get('order'), !empty($args['nulls_last']), "{$wpdb->posts}.ID");
-            $cb = static function (string $orderby, \WP_Query $q) use (&$cb, $query, $clause): string {
-                if ($q !== $query) {
-                    return $orderby;
-                }
-                remove_filter('posts_orderby', $cb, 10);
-                return $clause;
-            };
-            add_filter('posts_orderby', $cb, 10, 2);
-            return;
-        }
-        foreach ($args as $k => $v) {
-            $query->set((string) $k, $v);
-        }
-    }
-
-    public function searchTerm(object $query): string
-    {
-        return trim((string) $query->get('s'));
     }
 
     public function nativeColumns(): array
