@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-15T15:33:00+00:00\n"
+"POT-Creation-Date: 2026-11-16T07:51:26+00:00\n"
 "PO-Revision-Date: 2026-11-14 16:00+0900\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: lime-columns\n"
@@ -379,6 +379,18 @@ msgstr "CSVをエクスポート"
 #: src/Features/Export/ExportFeature.php:52
 msgid "You are not allowed to export this list."
 msgstr "この一覧をエクスポートする権限がありません。"
+
+#: src/Features/Search/SearchFeature.php:128
+msgid "Search in"
+msgstr "検索対象"
+
+#: src/Features/Search/SearchFeature.php:130
+msgid "Search in: all"
+msgstr "検索対象: すべて"
+
+#: src/Features/Search/SearchFeature.php:131
+msgid "Standard (title, content)"
+msgstr "標準（タイトル・本文）"
 
 #: src/Integrations/Acf/AcfFieldColumn.php:18
 #: src/Integrations/Acf/AcfFieldColumn.php:32

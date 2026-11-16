@@ -1,0 +1,11 @@
+.lc-search-in-wrap{display:inline-block;margin:0 6px 0 0;vertical-align:top}
+/* 設定画面の「有効」セレクトと同じ配色（緑の背景・白文字・白い矢印） */
+.lc-search-in-wrap select.lc-search-in{max-width:180px;color:#fff;background-color:#00a32a;border:0;border-radius:6px;font-weight:500;cursor:pointer;-webkit-appearance:none;appearance:none;box-sizing:border-box;height:32px;min-height:32px;line-height:30px;padding-top:0;padding-bottom:0;padding-left:10px;padding-right:30px;background-repeat:no-repeat;background-position:right 6px center;background-size:20px 20px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpath d='M5 6l5 5 5-5 2 1-7 7-7-7z' fill='%23fff'/%3E%3C/svg%3E")}
+.lc-search-in-wrap select.lc-search-in:hover{filter:brightness(.92);color:#fff}
+.lc-search-in-wrap select.lc-search-in:focus{color:#fff;box-shadow:0 0 0 2px #fff,0 0 0 4px #00a32a}
+.lc-search-in-wrap select.lc-search-in option{color:#2c3338;background:#fff}
+.search-box .lc-search-in-wrap.is-moved{margin:0 4px 0 0}
+@media (max-width:782px){
+  .search-box .lc-search-in-wrap.is-moved{display:block;margin:8px 0}
+  .search-box .lc-search-in-wrap.is-moved select.lc-search-in{width:100%;max-width:none;box-sizing:border-box}
+}
