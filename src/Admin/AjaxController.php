@@ -81,7 +81,7 @@ final class AjaxController
         $repo = $this->c->get('repository');
         $out = [];
         foreach ($this->c->get('screens')->all() as $s) {
-            $out[] = ['key' => $s->key(), 'label' => $s->label(), 'group' => $s->group(), 'configured' => $repo->find($s->key()) !== null];
+            $out[] = ['key' => $s->key(), 'label' => $s->label(), 'group' => $s->group(), 'tail' => (bool) preg_match('/^post:acfe?-/', $s->key()), 'configured' => $repo->find($s->key()) !== null];
         }
         return $out;
     }

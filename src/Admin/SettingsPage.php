@@ -33,7 +33,7 @@ final class SettingsPage
             'i18n' => $this->strings(),
         ];
         printf(
-            '<div class="wrap lime-columns"><h1 class="lc-brand"><img src="%s" alt="" width="80" height="80"> Lime Columns</h1><div id="lime-columns-app"></div></div>',
+            '<div class="wrap lime-columns"><h1 class="lc-brand"><img src="%s" alt="" width="60" height="60"> Lime Columns</h1><div id="lime-columns-app"></div></div>',
             esc_url(LIME_COLUMNS_URL . 'assets/images/logo.png')
         );
         printf('<script id="lime-columns-boot" type="application/json">%s</script>', wp_json_encode($boot)); // phpcs:ignore WordPress.Security.EscapeOutput

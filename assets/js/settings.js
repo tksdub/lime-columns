@@ -76,8 +76,10 @@ function render() {
 function renderSidebar() {
   const groups = {};
   for (const s of state.screens) (groups[s.group] ??= []).push(s);
+  // ACF 関連のグループは、常に最下部に置く（tail は言語に依存しない目印）。
+  const isTail = (list) => list.every((s) => s.tail);
   return h('nav', { class: 'lc-side' },
-    Object.entries(groups).map(([g, list]) => h('div', {},
+    Object.entries(groups).sort(([, a], [, b]) => Number(isTail(a)) - Number(isTail(b))).map(([g, list]) => h('div', {},
       h('h3', {}, g),
       h('ul', {}, list.map((s) => h('li', { class: s.key === state.key ? 'is-active' : '' },
         h('a', { href: '#', onclick: (e) => { e.preventDefault(); select(s.key); } },
@@ -165,13 +167,21 @@ function renderColumn(col, i) {
     cols.splice(i, 0, cols.splice(from, 1)[0]); touch(); render();
   });
 
+  // 幅: スライダーと数値欄を同期する（単位が % のときは 0〜100、px のときは 0〜600）。
+  const sliderMax = () => (col.width_unit === 'px' ? 600 : 100);
+  const widthRange = h('input', { type: 'range', min: 0, step: 1, class: 'lc-width-range', 'aria-label': t('Width') });
+  const widthNum = h('input', { type: 'number', min: 0, value: col.width, class: 'small-text' });
+  const syncRange = () => { widthRange.max = String(sliderMax()); widthRange.value = String(Math.min(Number(col.width) || 0, sliderMax())); };
+  widthRange.addEventListener('input', () => { col.width = widthRange.value === '0' ? '' : widthRange.value; widthNum.value = col.width; touch(); });
+  widthNum.addEventListener('input', () => { col.width = widthNum.value; syncRange(); touch(); });
+  const widthUnit = h('select', { onchange: (e) => { col.width_unit = e.target.value; syncRange(); touch(); } },
+    ['%', 'px'].map((u) => h('option', { value: u, selected: col.width_unit === u }, u)));
+  syncRange();
+
   const body = h('div', { class: 'lc-body', hidden: true },
     h('div', { class: 'lc-row' },
       h('label', {}, t('Label') + ' ', h('input', { type: 'text', value: col.label, class: 'regular-text', oninput: (e) => { col.label = e.target.value; touch(); } })),
-      h('label', {}, t('Width') + ' ',
-        h('input', { type: 'number', min: 0, value: col.width, class: 'small-text', oninput: (e) => { col.width = e.target.value; touch(); } }),
-        h('select', { onchange: (e) => { col.width_unit = e.target.value; touch(); } },
-          ['%', 'px'].map((u) => h('option', { value: u, selected: col.width_unit === u }, u))))),
+      h('label', {}, t('Width') + ' ', widthRange, widthNum, widthUnit)),
     flag(col, 'sort', 'Sortable', ty), flag(col, 'search', 'Searchable', ty), flag(col, 'export', 'Exportable', ty),
     renderFields(col, ty));
 
