@@ -67,7 +67,7 @@ final class RestController
         $types = $this->c->get('types')->forScreen($screen);
         foreach (['acf_field', 'user_acf_field'] as $id) {
             if (($types[$id] ?? null) instanceof AcfFieldColumn) {
-                $postType = str_starts_with($screen->key(), 'post:') ? substr($screen->key(), 5) : '';
+                $postType = str_starts_with($screen->key(), 'post:') ? substr($screen->key(), 5) : ($screen->key() === 'media' ? 'attachment' : '');
                 return ['type' => $id, 'fields' => $types[$id]->pickable($postType)];
             }
         }

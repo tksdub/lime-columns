@@ -117,6 +117,7 @@ final class AcpImporter
     {
         return match (true) {
             $acpKey === 'wp-users' => 'user',
+            $acpKey === 'wp-media' => 'media',
             str_starts_with($acpKey, 'wp-') => '',
             default => 'post:' . $acpKey,
         };

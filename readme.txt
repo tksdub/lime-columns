@@ -18,9 +18,9 @@ Lime Columns lets you manage the columns of the WordPress admin list tables from
 
 * **Column manager** - drag and drop to reorder; set a label and width (`%` or `px`) per column.
 * **Post and user list tables** - per post type, plus the Users screen.
-* **28 column types** - native WordPress columns, post fields, taxonomies, thumbnails, latest comment, custom fields, user fields and more.
+* **34 column types** - native WordPress columns, post fields, taxonomies, thumbnails, latest comment, custom fields, user fields, media fields (file name, size, dimensions, MIME type, alt text) and more.
 * **Sorting** - sort by any sortable column, including meta values. Empty values always sort last and rows are never dropped.
-* **Search** - works with the native WordPress search box, so there is no separate search form to learn. Include selected columns in the built-in search: custom field / ACF values, author names and taxonomy term names. Available on post list tables.
+* **Search** - works with the native WordPress search box, so there is no separate search form to learn. Include selected columns in the built-in search: custom field / ACF values, author names and taxonomy term names. A "Search in" drop-down next to the search box narrows the search to all columns, the standard fields only, or a single column. Available on post and media list tables.
 * **Default sort** - set the initial order per list screen.
 * **CSV export** - export exactly what the list shows, using the same query and filters.
 * **Role restriction** - apply a configuration only to selected roles.
@@ -49,7 +49,7 @@ No. ACF fields are listed as column types only when ACF is active.
 
 = Which list screens are supported? =
 
-Post list tables of every post type with a UI, and the Users list table. Media, comments and taxonomy list tables are planned.
+Post list tables of every post type with a UI, the Media Library (list view) and the Users list table. Comments and taxonomy list tables are planned.
 
 = Does it change my data? =
 
@@ -58,7 +58,7 @@ Only its own settings are saved, in a dedicated database table. The importer rea
 == Changelog ==
 
 = 0.1.0 =
-* Initial release: column manager, post and user list tables, 28 column types, sorting, search, default sort, CSV export, role restriction, ACF integration, Admin Columns importer, Japanese translation.
+* Initial release: column manager, post, media and user list tables, 34 column types, sorting, search, default sort, CSV export, role restriction, ACF integration, Admin Columns importer, Japanese translation.
 
 == Upgrade Notice ==
 

@@ -8,9 +8,10 @@ use LimeColumns\Container;
 use LimeColumns\Context;
 use LimeColumns\Contracts\ColumnType;
 use LimeColumns\Contracts\Feature;
+use LimeColumns\ListScreen\WpQueryListScreen;
 
 /**
- * 一覧の検索を、検索対象に指定した列（メタ値・投稿者名・タクソノミー名など）へ拡張する。現状は投稿一覧のみ。
+ * 一覧の検索を、検索対象に指定した列（メタ値・投稿者名・タクソノミー名など）へ拡張する。現状は投稿一覧・メディア一覧（WP_Query の画面）のみ。
  * 検索窓の横のプルダウン（lc_search_in）で、検索対象を「すべて」「標準のみ」「特定の列」に絞れる。
  */
 final class SearchFeature implements Feature
@@ -24,8 +25,8 @@ final class SearchFeature implements Feature
     public function boot(Container $c): void
     {
         add_action('lime_columns/context_ready', function (Context $ctx): void {
-            if ($ctx->screen->objectType() !== 'post') {
-                return;
+            if (!$ctx->screen instanceof WpQueryListScreen) {
+                return; // WP_Query で一覧を作る画面（投稿・メディア）のみ
             }
             /** @var array<string,array{col:Column,type:ColumnType,keys:list<string>,label:string}> $targets */
             $targets = [];
@@ -121,7 +122,7 @@ final class SearchFeature implements Feature
     private function registerUi(array $targets, string $scope): void
     {
         add_action('restrict_manage_posts', static function (string $postType = '', string $which = 'top') use ($targets, $scope): void {
-            if ($which !== 'top') {
+            if (!in_array($which, ['top', 'bar'], true)) { // 'bar' はメディア一覧の引数
                 return;
             }
             echo '<span class="lc-search-in-wrap" id="lc-search-in-wrap">';

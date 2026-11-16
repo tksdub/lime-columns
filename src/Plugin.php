@@ -142,6 +142,8 @@ final class Plugin
             new Types\User\UserField('user_id'), new Types\User\UserField('registered'),
             new Types\User\UserField('user_url'), new Types\User\UserField('display_name'),
             new Types\Common\CustomField('post'), new Types\Common\CustomField('user'),
+            new Types\Media\UploadedTo(), new Types\Media\MediaField('file_name'), new Types\Media\MediaField('file_size'),
+            new Types\Media\MediaField('dimensions'), new Types\Media\MediaField('mime_type'), new Types\Media\MediaField('alt_text'),
             new Types\Common\Foreign(),
         ];
     }

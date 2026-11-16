@@ -12,6 +12,7 @@ final class AuthorDisplay extends AbstractColumnType
 {
     public function id(): string { return 'author_display'; }
     public function label(): string { return __('Author (custom display)', 'lime-columns'); }
+    protected function objectTypes(): array { return ['post', 'media']; }
 
     public function fields(): array
     {

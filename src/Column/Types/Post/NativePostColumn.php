@@ -12,6 +12,12 @@ abstract class NativePostColumn extends AbstractColumnType
 {
     abstract protected function orderby(): ?string;
 
+    /** @return list<string> */
+    protected function objectTypes(): array
+    {
+        return ['post', 'media'];
+    }
+
     public function capabilities(): array
     {
         return self::caps(sort: $this->orderby() !== null);
@@ -34,6 +40,7 @@ abstract class NativePostColumn extends AbstractColumnType
             'author' => (string) (get_userdata((int) $post->post_author)->display_name ?? ''),
             'date' => Format::date($post->post_date, 'wp'),
             'comments' => (string) get_comments_number($id),
+            'parent' => $post->post_parent ? (string) get_the_title($post->post_parent) : '',
             default => '',
         };
     }

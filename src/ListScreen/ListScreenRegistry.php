@@ -20,6 +20,7 @@ final class ListScreenRegistry
                     $list[] = new PostListScreen($pt);
                 }
             }
+            $list[] = new MediaListScreen();
             $list[] = new UserListScreen();
             /** @var ListScreen[] $list */
             $list = apply_filters('lime_columns/list_screens', $list);

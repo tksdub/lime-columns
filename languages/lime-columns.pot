@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-16T07:51:26+00:00\n"
+"POT-Creation-Date: 2026-11-16T09:28:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: lime-columns\n"
@@ -225,7 +225,7 @@ msgid "Type"
 msgstr ""
 
 #: src/Column/Types/Common/CustomField.php:28
-#: src/Column/Types/Post/PostField.php:47
+#: src/Column/Types/Post/PostField.php:53
 #: src/Column/Types/User/UserField.php:40
 #: src/Integrations/Acf/AcfFieldColumn.php:34
 msgid "Date format"
@@ -233,7 +233,7 @@ msgstr ""
 
 #: src/Column/Types/Common/CustomField.php:30
 #: src/Column/Types/Post/LatestComment.php:21
-#: src/Column/Types/Post/PostField.php:49
+#: src/Column/Types/Post/PostField.php:55
 #: src/Column/Types/User/UserField.php:42
 #: src/Integrations/Acf/AcfFieldColumn.php:36
 msgid "PHP date format"
@@ -257,6 +257,30 @@ msgstr ""
 msgid "Column from another plugin/theme"
 msgstr ""
 
+#: src/Column/Types/Media/MediaField.php:26
+msgid "File name"
+msgstr ""
+
+#: src/Column/Types/Media/MediaField.php:27
+msgid "File size"
+msgstr ""
+
+#: src/Column/Types/Media/MediaField.php:28
+msgid "Dimensions"
+msgstr ""
+
+#: src/Column/Types/Media/MediaField.php:29
+msgid "MIME type"
+msgstr ""
+
+#: src/Column/Types/Media/MediaField.php:30
+msgid "Alt text"
+msgstr ""
+
+#: src/Column/Types/Media/UploadedTo.php:12
+msgid "Uploaded to (WP default)"
+msgstr ""
+
 #: src/Column/Types/Post/Author.php:12
 msgid "Author (WP default)"
 msgstr ""
@@ -265,11 +289,11 @@ msgstr ""
 msgid "Author (custom display)"
 msgstr ""
 
-#: src/Column/Types/Post/AuthorDisplay.php:19
+#: src/Column/Types/Post/AuthorDisplay.php:20
 msgid "Display as"
 msgstr ""
 
-#: src/Column/Types/Post/AuthorDisplay.php:21
+#: src/Column/Types/Post/AuthorDisplay.php:22
 msgid "Link to"
 msgstr ""
 
@@ -289,31 +313,31 @@ msgstr ""
 msgid "Display"
 msgstr ""
 
-#: src/Column/Types/Post/PostField.php:34
+#: src/Column/Types/Post/PostField.php:40
 msgid "ID"
 msgstr ""
 
-#: src/Column/Types/Post/PostField.php:35
+#: src/Column/Types/Post/PostField.php:41
 msgid "Slug"
 msgstr ""
 
-#: src/Column/Types/Post/PostField.php:36
+#: src/Column/Types/Post/PostField.php:42
 msgid "Status"
 msgstr ""
 
-#: src/Column/Types/Post/PostField.php:37
+#: src/Column/Types/Post/PostField.php:43
 msgid "Last modified"
 msgstr ""
 
-#: src/Column/Types/Post/PostField.php:38
+#: src/Column/Types/Post/PostField.php:44
 msgid "Excerpt"
 msgstr ""
 
-#: src/Column/Types/Post/PostField.php:39
+#: src/Column/Types/Post/PostField.php:45
 msgid "Content"
 msgstr ""
 
-#: src/Column/Types/Post/PostField.php:52
+#: src/Column/Types/Post/PostField.php:58
 msgid "Word limit"
 msgstr ""
 
@@ -378,15 +402,15 @@ msgstr ""
 msgid "You are not allowed to export this list."
 msgstr ""
 
-#: src/Features/Search/SearchFeature.php:128
+#: src/Features/Search/SearchFeature.php:129
 msgid "Search in"
 msgstr ""
 
-#: src/Features/Search/SearchFeature.php:130
+#: src/Features/Search/SearchFeature.php:131
 msgid "Search in: all"
 msgstr ""
 
-#: src/Features/Search/SearchFeature.php:131
+#: src/Features/Search/SearchFeature.php:132
 msgid "Standard (title, content)"
 msgstr ""
 
@@ -399,11 +423,11 @@ msgstr ""
 msgid "Repeater sub field key"
 msgstr ""
 
-#: src/ListScreen/PostListScreen.php:23
+#: src/ListScreen/PostListScreen.php:19
 msgid "ACF menu"
 msgstr ""
 
-#: src/ListScreen/PostListScreen.php:23
+#: src/ListScreen/PostListScreen.php:19
 msgid "Post types"
 msgstr ""
 

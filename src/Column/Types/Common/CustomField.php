@@ -17,7 +17,7 @@ final class CustomField extends AbstractColumnType
     public function id(): string { return $this->object === 'user' ? 'user_custom_field' : 'custom_field'; }
     public function label(): string { return __('Custom field', 'lime-columns'); }
     public function group(): string { return 'custom'; }
-    protected function objectTypes(): array { return [$this->object]; }
+    protected function objectTypes(): array { return $this->object === 'post' ? ['post', 'media'] : [$this->object]; }
 
     public function fields(): array
     {

@@ -28,6 +28,12 @@ final class PostField extends AbstractColumnType
         return $this->kind;
     }
 
+    /** @return list<string> ステータスは添付ファイルでは常に inherit なので、メディアでは出さない。 */
+    protected function objectTypes(): array
+    {
+        return $this->kind === 'status' ? ['post'] : ['post', 'media'];
+    }
+
     public function label(): string
     {
         return match ($this->kind) {

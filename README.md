@@ -12,9 +12,9 @@ Lime Columns is written from scratch. It does not reuse any code or assets from 
 
 - **Column manager UI** — drag & drop (or use the arrow buttons) to reorder; set a label and width (`%` / `px`) per column.
 - **Post and user list tables** — per post type, plus the Users screen.
-- **28 column types** — native WordPress columns (title, author, date, comments, …), post fields, taxonomies, thumbnails, latest comment, custom fields, user fields, and more.
+- **34 column types** — native WordPress columns (title, author, date, comments, …), post fields, taxonomies, thumbnails, latest comment, custom fields, user fields, media fields (file name, size, dimensions, MIME type, alt text), and more.
 - **Sorting** — sort by any sortable column, including meta values (empty values always sort last, and rows are never dropped).
-- **Search** — works with the native WordPress search box; there is no separate search form to learn. Include selected columns in the built-in search: custom field / ACF values, author names (display name and login) and taxonomy term names. Available on post list tables.
+- **Search** — works with the native WordPress search box; there is no separate search form to learn. Include selected columns in the built-in search: custom field / ACF values, author names (display name and login) and taxonomy term names. A **Search in** drop-down next to the search box narrows the search to all columns, the standard fields only, or a single column. Available on post and media list tables.
 - **Default sort** — set the initial order per list screen.
 - **CSV export** — export exactly what the list shows, using the same query and filters.
 - **Role restriction** — apply a configuration only to selected roles.
@@ -48,7 +48,7 @@ To migrate from Admin Columns, open **Import from Admin Columns**, click **Previ
 
 ## Roadmap
 
-Inline edit, bulk edit, filtering, saved views, conditional formatting, and list screens for media, comments and taxonomies.
+Inline edit, bulk edit, filtering, saved views, conditional formatting, and list screens for comments and taxonomies.
 
 ## Disclaimer
 

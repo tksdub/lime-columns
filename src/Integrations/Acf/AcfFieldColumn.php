@@ -17,7 +17,7 @@ final class AcfFieldColumn extends AbstractColumnType
     public function id(): string { return $this->object === 'user' ? 'user_acf_field' : 'acf_field'; }
     public function label(): string { return __('ACF field', 'lime-columns'); }
     public function group(): string { return 'custom'; }
-    protected function objectTypes(): array { return [$this->object]; }
+    protected function objectTypes(): array { return $this->object === 'post' ? ['post', 'media'] : [$this->object]; }
     public function capabilities(): array { return self::caps(sort: true, search: true); }
 
     public function fields(): array
@@ -43,9 +43,22 @@ final class AcfFieldColumn extends AbstractColumnType
      */
     public function pickable(string $postType = ''): array
     {
-        $args = $this->object === 'user' ? ['user_form' => 'edit'] : ['post_type' => $postType];
+        // 添付ファイル（メディア）の ACF 位置ルールは post_type ではなく attachment（all / MIME の大分類）で判定される。
+        if ($this->object === 'user') {
+            $argSets = [['user_form' => 'edit']];
+        } elseif ($postType === 'attachment') {
+            $argSets = array_map(static fn (string $t) => ['attachment' => $t], ['all', 'image', 'video', 'audio', 'application', 'text']);
+        } else {
+            $argSets = [['post_type' => $postType]];
+        }
+        $groups = [];
+        foreach ($argSets as $args) {
+            foreach (acf_get_field_groups($args) as $group) {
+                $groups[(string) $group['key']] = $group;
+            }
+        }
         $out = [];
-        foreach (acf_get_field_groups($args) as $group) {
+        foreach ($groups as $group) {
             foreach ((array) acf_get_fields($group['key']) as $f) {
                 if (in_array($f['type'], ['tab', 'message', 'accordion'], true)) {
                     continue;
